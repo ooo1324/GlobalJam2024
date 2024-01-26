@@ -34,6 +34,8 @@ namespace KSY
 
         private void OnMouseDown()
         {
+            Poolable poolable = gameObject.GetComponent<Poolable>();
+            Managers.Pool.Push(poolable);
             gameObject.SetActive(false);
         }
     } 

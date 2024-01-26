@@ -15,8 +15,6 @@ namespace KSY
         [SerializeField]
         private GameObject spawnPrefab;
         
-
-        // Start is called before the first frame update
         void Start()
         {
             StartCoroutine(Spawn());
@@ -26,8 +24,10 @@ namespace KSY
         {
             while (true)
             {
-                Managers.Pool.Pop(spawnPrefab, gameObject.transform);
+                Poolable obj = Managers.Pool.Pop(spawnPrefab, gameObject.transform);
 
+                obj.gameObject.transform.position = gameObject.transform.position;
+                
                 yield return new WaitForSeconds(spawnRate);
             }      
         }
