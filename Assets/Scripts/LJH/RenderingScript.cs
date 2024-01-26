@@ -7,8 +7,8 @@ namespace LJH{
 
     public class RenderingScript : MonoBehaviour
     {
-        [SerializeField] RenderTexture mainTexture;
-        [SerializeField] Camera cam1, cam2, cam3, cam4;
+        [SerializeField] List<GameObject> virtuarCameras = new();
+        [SerializeField] List<Animator> camAnimators = new();
         
         // Start is called before the first frame update
         void Start()
@@ -20,28 +20,44 @@ namespace LJH{
         void Update()
         {
             if(Input.GetKeyDown(KeyCode.Alpha1)){
-                cam1.targetTexture = mainTexture;
-                cam2.targetTexture = null;
-                cam3.targetTexture = null;
-                cam4.targetTexture = null;
+                virtuarCameras[0].SetActive(true);
+                virtuarCameras[1].SetActive(false);
+                virtuarCameras[2].SetActive(false);
+                virtuarCameras[3].SetActive(false);
+                camAnimators[0].SetBool("Close",false);
+                camAnimators[1].SetBool("Close",true);
+                camAnimators[2].SetBool("Close",true);
+                camAnimators[3].SetBool("Close",true);
             }
             if(Input.GetKeyDown(KeyCode.Alpha2)){
-                cam1.targetTexture = null;
-                cam2.targetTexture = mainTexture;
-                cam3.targetTexture = null;
-                cam4.targetTexture = null;
+                virtuarCameras[0].SetActive(false);
+                virtuarCameras[1].SetActive(true);
+                virtuarCameras[2].SetActive(false);
+                virtuarCameras[3].SetActive(false);
+                camAnimators[0].SetBool("Close",true);
+                camAnimators[1].SetBool("Close",false);
+                camAnimators[2].SetBool("Close",true);
+                camAnimators[3].SetBool("Close",true);
             }
             if(Input.GetKeyDown(KeyCode.Alpha3)){
-                cam1.targetTexture = null;
-                cam2.targetTexture = null;
-                cam3.targetTexture = mainTexture;
-                cam4.targetTexture = null;
+                virtuarCameras[0].SetActive(false);
+                virtuarCameras[1].SetActive(false);
+                virtuarCameras[2].SetActive(true);
+                virtuarCameras[3].SetActive(false);
+                camAnimators[0].SetBool("Close",true);
+                camAnimators[1].SetBool("Close",true);
+                camAnimators[2].SetBool("Close",false);
+                camAnimators[3].SetBool("Close",true);
             }
             if(Input.GetKeyDown(KeyCode.Alpha4)){
-                cam1.targetTexture = null;
-                cam2.targetTexture = null;
-                cam3.targetTexture = null;
-                cam4.targetTexture = mainTexture;
+                virtuarCameras[0].SetActive(false);
+                virtuarCameras[1].SetActive(false);
+                virtuarCameras[2].SetActive(false);
+                virtuarCameras[3].SetActive(true);
+                camAnimators[0].SetBool("Close",true);
+                camAnimators[1].SetBool("Close",true);
+                camAnimators[2].SetBool("Close",true);
+                camAnimators[3].SetBool("Close",false);
             }
 
         }
