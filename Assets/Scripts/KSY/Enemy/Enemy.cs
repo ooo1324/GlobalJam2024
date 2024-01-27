@@ -108,7 +108,7 @@ namespace KSY
             if (collision.CompareTag("EndSensor"))
             {
                 Managers.Events.MinusScoreInvoke(damage);
-                GameManager.Instance.RemoveEnemyObj(gameObject);
+                GameManager.Instance.RemoveEnemyObj(gameObject, false);
             }
         }
 

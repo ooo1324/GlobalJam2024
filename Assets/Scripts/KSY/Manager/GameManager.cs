@@ -147,6 +147,14 @@ namespace KSY
             {
                 maxSpawnCount += spawnList[i];
             }
+
+            if (currStage == 0)
+                scoreManager.Health = 60;
+            else if(currStage == 1)
+                scoreManager.Health = 120;
+            else if (currStage == 2)
+                scoreManager.Health = 150;
+
             // Boss Count Ãß°¡
             maxSpawnCount++;
             currWave = -1;
@@ -179,10 +187,11 @@ namespace KSY
         }
 
 
-        public void RemoveEnemyObj(GameObject obj)
+        public void RemoveEnemyObj(GameObject obj,  bool isParticle = true)
         {
             particle.transform.position = obj.transform.position;
-            particle.SetActive(true);
+            if(isParticle)
+                particle.SetActive(true);
             Managers.Pool.Push(obj.GetComponent<Poolable>());  
         }
 

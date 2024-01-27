@@ -18,6 +18,9 @@ public class ScoreManager : MonoBehaviour
     }
 
     [SerializeField]
+    private float maxHealth;
+
+    [SerializeField]
     List<Sprite> girlSprites;
 
     [SerializeField]
@@ -26,23 +29,25 @@ public class ScoreManager : MonoBehaviour
 
     private void CheckGirlImg()
     {
-        if (0 >= health)
+        float percent = health / maxHealth * 100f;
+
+        if (0 >= percent)
         {
             uiImage.sprite = girlSprites[0];
         }
-        else if (20 >= health)
+        else if (20 >= percent)
         {
             uiImage.sprite = girlSprites[1];
         }
-        else if (40 >= health)
+        else if (40 >= percent)
         {
             uiImage.sprite = girlSprites[2];
         }
-        else if (60 >= health)
+        else if (60 >= percent)
         {
             uiImage.sprite = girlSprites[3];
         }
-        else if (80 >= health)
+        else if (80 >= percent)
         {
             uiImage.sprite = girlSprites[4];
         }
