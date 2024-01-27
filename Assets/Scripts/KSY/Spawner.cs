@@ -61,8 +61,9 @@ namespace KSY
             Poolable obj = Managers.Pool.Pop(spawnBossPrefabs[bossIdx], gameObject.transform);
             Managers.Events.AddEnemyInvoke();
             Enemy enemy = obj.gameObject.GetComponent<Enemy>();
-            enemy.wayPointPos = bossSpawnPos.GetComponent<WayPoint>().wayPointPos;
+            enemy.WayPointPos = bossSpawnPos.GetComponent<WayPoint>().wayPointPos;
             obj.gameObject.transform.position = bossSpawnPos.transform.position;
+            enemy.Init();
         }
 
         IEnumerator Spawn()
@@ -75,7 +76,7 @@ namespace KSY
                 
                 Enemy enemy = obj.gameObject.GetComponent<Enemy>();
 
-                enemy.wayPointPos = wayPoint[randIdx].wayPointPos;
+                enemy.WayPointPos = wayPoint[randIdx].wayPointPos;
                 obj.gameObject.transform.position = spawnPos[randIdx].transform.position;
                 if (enemy.EnemyType == EEnemyType.TeddyBear_Bomb)
                 {

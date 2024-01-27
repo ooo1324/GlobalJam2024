@@ -17,6 +17,7 @@ namespace KSY
 
         private SpriteRenderer spriteRender;
 
+        [SerializeField]
         private int moveIdx;
         public int MoveIdx
         {
@@ -39,8 +40,16 @@ namespace KSY
             }
         }
 
+        private Vector3[] wayPointPos;
         // �̵� ����Ʈ
-        public Vector3[] wayPointPos;
+        public Vector3[] WayPointPos
+        {
+            get { return wayPointPos; }
+            set
+            {
+                wayPointPos = value;
+            }
+        }
 
         [SerializeField]
         private int spawnerIdx;

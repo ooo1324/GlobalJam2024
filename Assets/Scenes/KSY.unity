@@ -259,7 +259,10 @@ MonoBehaviour:
   - {fileID: 74550039}
   - {fileID: 426925319}
   - {fileID: 1775923360}
-  bossSpawnPos: {fileID: 0}
+  bossSpawnPos:
+  - {fileID: 1375605799}
+  - {fileID: 974177224}
+  - {fileID: 835630803}
 --- !u!4 &101697052
 Transform:
   m_ObjectHideFlags: 0
@@ -913,6 +916,7 @@ Transform:
   - {fileID: 74550040}
   - {fileID: 426925320}
   - {fileID: 1775923361}
+  - {fileID: 835630804}
   m_Father: {fileID: 101697052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526323529
@@ -961,8 +965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointPos:
   - {x: 37.9, y: -3.5, z: 0}
-  - {x: 54.92, y: 0.78, z: -0.15027198}
-  - {x: 69.95, y: -1.99, z: -0.15027198}
+  - {x: 54.92, y: 0.78, z: 0}
+  - {x: 69.95, y: -1.99, z: 0}
   - {x: 85, y: -1.99, z: 0}
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &542933067
@@ -1195,6 +1199,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6485061189677541832, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
   m_PrefabInstance: {fileID: 4933587270227877874}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &835630803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 835630804}
+  - component: {fileID: 835630805}
+  m_Layer: 0
+  m_Name: spawnBossPosDR
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &835630804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835630803}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -7.6, z: -0.10072672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 477834261}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &835630805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835630803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412bb03bfedd53b4fad3715aa727a968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPointPos:
+  - {x: 104.58, y: -28.22, z: 0}
+  - {x: 115.3, y: -34.67, z: 0}
+  - {x: 130.51, y: -30.69, z: 0}
+  - {x: 151.34, y: -34.86, z: 0}
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &911248721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1415,6 +1469,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &974177224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974177225}
+  - component: {fileID: 974177226}
+  m_Layer: 0
+  m_Name: spawnBossPosDL
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &974177225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974177224}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -7.51, z: -0.10072672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1209054217}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &974177226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974177224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412bb03bfedd53b4fad3715aa727a968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPointPos:
+  - {x: 64.11, y: -24.16, z: 0}
+  - {x: 51.61, y: -31.4, z: 0}
+  - {x: 37.28, y: -26.76, z: 0}
+  - {x: 16.93, y: -26.76, z: 0}
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!4 &979447670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6873078726711854194, guid: 00b42dac98b827a40884f0147bd25f2e, type: 3}
@@ -1948,6 +2052,7 @@ Transform:
   - {fileID: 629451707}
   - {fileID: 1531829024}
   - {fileID: 49618985}
+  - {fileID: 974177225}
   m_Father: {fileID: 101697052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1247739036
@@ -2258,7 +2363,9 @@ MonoBehaviour:
   wayPointPos:
   - {x: 106.11, y: 5.28, z: 0}
   - {x: 119.35, y: 0.35, z: 0}
-  gizmoColor: {r: 1, g: 0.39308167, b: 0.39308167, a: 1}
+  - {x: 111.65, y: -7.22, z: 0}
+  - {x: 119.57, y: -18.45, z: 0}
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1432295891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2779,7 +2886,8 @@ MonoBehaviour:
   - {fileID: 542933067}
   - {fileID: 1267232810}
   bossSpawnPos: {fileID: 526323529}
-  spawnBossPrefabs: []
+  spawnBossPrefabs:
+  - {fileID: 187875133783029457, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
   spawnMaxCnt: 0
   spawnCurrCnt: 0
 --- !u!1 &1742133647
@@ -2807,7 +2915,7 @@ Transform:
   m_GameObject: {fileID: 1742133647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 119.35, y: 0.35, z: 0}
+  m_LocalPosition: {x: 151.34, y: -34.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3426,63 +3534,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
---- !u!1001 &6776969969983701587
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 187875133783029457, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_Name
-      value: Enemy_ClownBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 38.8654
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.7946
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521504043625962390, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3502,4 +3553,3 @@ SceneRoots:
   - {fileID: 101697052}
   - {fileID: 247049360}
   - {fileID: 188290519}
-  - {fileID: 6776969969983701587}

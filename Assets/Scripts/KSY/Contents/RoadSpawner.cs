@@ -12,7 +12,7 @@ namespace KSY
         private List<WayPoint> wayPoint;
 
         [SerializeField]
-        private GameObject bossSpawnPos;
+        private GameObject[] bossSpawnPos;
 
 
         void Awake()
@@ -33,20 +33,21 @@ namespace KSY
             enemy.SpawnerIdx++;
 
             if (enemy.EnemyType == EEnemyType.Clown_Boss)
-            {
-                obj.transform.position = bossSpawnPos.transform.position;
-                enemy.wayPointPos = bossSpawnPos.GetComponent<Enemy>().wayPointPos;
+            {         
+                int ranIdx = Random.Range(0, 4);
+                obj.transform.position = bossSpawnPos[enemy.SpawnerIdx].transform.position;
+                enemy.WayPointPos = bossSpawnPos[enemy.SpawnerIdx].GetComponent<Enemy>().WayPointPos;
+                enemy.MoveIdx = 0;
             }
             else
             {
                 int spawnerIdx = enemy.SpawnerIdx * 4;
                 int ranIdx = Random.Range(spawnerIdx, spawnerIdx + 4);
                 obj.transform.position = spawnPos[ranIdx].transform.position;
-                enemy.wayPointPos = wayPoint[ranIdx].wayPointPos;
+                enemy.WayPointPos = wayPoint[ranIdx].wayPointPos;
                 enemy.MoveIdx = 0;
             }
-
-           
+       
             obj.SetActive(true);
         }
     }
