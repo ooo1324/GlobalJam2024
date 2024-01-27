@@ -285,6 +285,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1352563769}
     m_Modifications:
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Size.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6642838f247f6f4ebd792073a834886, type: 3}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1088988445206597591, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
       propertyPath: m_Name
       value: InGameBg
@@ -702,6 +718,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1515119549}
     m_Modifications:
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Size.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Size.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a57ade5129a7dcc4e8bb0fe230c42f12, type: 3}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1088988445206597591, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
       propertyPath: m_Name
       value: InGameBg
@@ -1182,6 +1214,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2035423392}
     m_Modifications:
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c98acec746cd1ac428ad5459863ad529, type: 3}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1088988445206597591, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
       propertyPath: m_Name
       value: InGameBg
@@ -3100,6 +3144,7 @@ MonoBehaviour:
   currStage: 0
   currWave: 0
   spawnCount: 0
+  weaponLevel: 0
   minusCount: 0
   spawner: {fileID: 0}
   roadSpawner: {fileID: 0}
@@ -3216,6 +3261,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1266670482}
     m_Modifications:
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bad0b7144107484d9faa4c9ec261533, type: 3}
+    - target: {fileID: 322601393103085294, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1088988445206597591, guid: 8269263f7db642e4cb06348b37239eb2, type: 3}
       propertyPath: m_Name
       value: InGameBg
