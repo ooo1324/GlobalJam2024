@@ -6179,6 +6179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wandGuageSlider: {fileID: 1593569980}
+  wandCollider: {fileID: 0}
 --- !u!1 &1470161966
 GameObject:
   m_ObjectHideFlags: 0
@@ -6310,6 +6311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wandGuageSlider: {fileID: 1593569980}
+  wandCollider: {fileID: 0}
 --- !u!1 &1547340228
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,9 +6571,9 @@ MonoBehaviour:
   spawnRate: 0.8
   rotateAngle: 0
   spawnPrefabs:
-  - {fileID: 3988682555338751173, guid: 44232ad53e3ed1a4f9f3a3bf904761af, type: 3}
+  - {fileID: 6932699163362570990, guid: ebafa1a3802154c1ba7f53d1447b7963, type: 3}
   - {fileID: 3988682555338751173, guid: 5dec58add2ef2204f902a95e53af1177, type: 3}
-  - {fileID: 1494430820161803138, guid: e6a18a5e94314bd429a38f481fdf63c5, type: 3}
+  - {fileID: 8222857861550378654, guid: f1d29ded0c8684b9da0aaed8a1d6ce96, type: 3}
   spawnPos:
   - {fileID: 906430690}
   - {fileID: 10168114}
@@ -6579,7 +6581,7 @@ MonoBehaviour:
   - {fileID: 1904717148}
   bossSpawnPos: {fileID: 855684422}
   spawnBossPrefabs:
-  - {fileID: 187875133783029457, guid: ca8af693f06b36b48ae588b9b2985407, type: 3}
+  - {fileID: 7284173057771058502, guid: 9b86fd767e3b64ab4a868cee0b680bd8, type: 3}
   spawnMaxCnt: 0
   spawnCurrCnt: 0
 --- !u!4 &1586999378

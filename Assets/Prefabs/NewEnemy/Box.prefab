@@ -196,9 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9baac153e6c83e429c38405b526b181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickHp: 4
+  damage: 5
+  moveIdx: 0
   enemyType: 0
-  wayPointPos: []
   spawnerIdx: 0
+  moveSpeed: 15
 --- !u!114 &5366417560996991172
 MonoBehaviour:
   m_ObjectHideFlags: 0
