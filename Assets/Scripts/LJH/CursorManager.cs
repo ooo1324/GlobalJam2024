@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using KSY;
+using Unity.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -28,6 +30,10 @@ namespace LJH{
         public Texture2D nomalCursor;
 
         public int nowWeponNum = 0;
+
+        [SerializeField] GameObject attackMotionPrefab;
+        [SerializeField] Transform attackMotionGroup;
+        [SerializeField] Transform attackMotionPosition;
         // Start is called before the first frame update
         void Start()
         {
@@ -40,7 +46,24 @@ namespace LJH{
         {
             CursorChange();
 
-            
+            if(Input.GetMouseButtonDown(0)){
+                GameObject attackMoation = Instantiate(attackMotionPrefab, 
+                    new Vector3(attackMotionPosition.position.x, attackMotionPosition.position.y,0f), 
+                    Quaternion.identity, attackMotionGroup);
+                switch(nowWeponNum){
+                    case 0: //Sword
+                        attackMoation.GetComponent<Animator>().SetBool("Sword",true);
+                    break;
+                    
+                    case 1: //wand
+                        
+                    break;
+
+                    case 2: //gun
+                        attackMoation.GetComponent<Animator>().SetBool("Gun",true);
+                    break;
+                }
+            }
         }
 
         void CursorChange()
