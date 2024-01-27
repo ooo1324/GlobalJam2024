@@ -6,6 +6,7 @@ namespace KSY
 {
     public class Spawner : MonoBehaviour
     {
+
         [SerializeField]
         private float spawnRate;
 
@@ -15,28 +16,53 @@ namespace KSY
         [SerializeField]
         private GameObject spawnPrefab;
 
-        private WayPoint wayPoint;
+        [SerializeField]
+        private GameObject[] spawnPos;
+
+        [SerializeField]
+        private int spawnMaxCnt;
+
+        [SerializeField]
+        private int spawnCurrCnt = 0;
+
+        private List<WayPoint> wayPoint;
 
 
-        void Start()
+        void Awake()
         {
-            wayPoint = GetComponent<WayPoint>();
+            wayPoint = new List<WayPoint>();
+            for (int i = 0; i < spawnPos.Length; i++)
+            {
+                wayPoint.Add(spawnPos[i].GetComponent<WayPoint>());
+            }                   
+        }
+
+        public void StartSpawn(int cnt)
+        {
+            spawnCurrCnt = 0;
+            spawnMaxCnt = cnt;
             StartCoroutine(Spawn());
+        }
+
+        public void StopSpawn()
+        {
+            StopCoroutine(Spawn());
         }
 
         IEnumerator Spawn()
         {
-            while (true)
+            while (spawnCurrCnt < spawnMaxCnt)
             {
-                Poolable obj = Managers.Pool.Pop(spawnPrefab, gameObject.transform);
-                obj.gameObject.GetComponent<Enemy>().wayPointPos = wayPoint.wayPointPos;
-                obj.gameObject.transform.position = gameObject.transform.position;
-     
+                int randIdx = Random.Range(0, spawnPos.Length);
+                Poolable obj = Managers.Pool.Pop(spawnPrefab, spawnPos[randIdx].transform);
+                obj.gameObject.GetComponent<Enemy>().wayPointPos = wayPoint[randIdx].wayPointPos;
+                obj.gameObject.transform.position = spawnPos[randIdx].transform.position;
+                GameManager.Instance.AddEnemyObj(obj.gameObject);
+
+                spawnCurrCnt++;
 
                 yield return new WaitForSeconds(spawnRate);
             }      
         }
-
     }
-
 }

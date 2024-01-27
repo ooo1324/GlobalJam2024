@@ -9,21 +9,12 @@ namespace KSY
         [SerializeField]
         public Vector3[] wayPointPos;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        [SerializeField]
+        private Color gizmoColor;
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = gizmoColor;
 
             for (int i = 0; i < wayPointPos.Length; i++)
             {

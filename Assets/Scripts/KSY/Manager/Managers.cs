@@ -14,13 +14,12 @@ namespace KSY
 
         #region Managers
         private PoolManager _poolManager = new PoolManager();
-        private GameManager _gameManager = new GameManager();
 
         public static PoolManager Pool { get { return Instance._poolManager; } }
-        public static GameManager Game { get { return Instance._gameManager; } }
         #endregion
 
         private static string managersName = "@Managers";
+
 
         private void Awake()
         {
