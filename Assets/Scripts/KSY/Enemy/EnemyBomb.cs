@@ -44,7 +44,7 @@ namespace KSY
             // 터지는거 처리
             Debug.Log("Bomb!");
             // 애니메이션 수행 애니메이션 이벤트 받아서 터지도록 구현
-            Managers.Events.MinusScoreInvoke();
+            Managers.Events.MinusScoreInvoke(damage);
             GameManager.Instance.RemoveEnemyObj(gameObject);
         }
     }

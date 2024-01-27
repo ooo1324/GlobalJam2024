@@ -45,6 +45,11 @@ namespace KSY
 
         private List<StageInfo> stageInfoList;
 
+        [SerializeField]
+        private GameObject particle;
+
+        private ScoreManager scoreManager;
+
         private float maxTime = 0;
 
         public int dmg;
@@ -52,7 +57,7 @@ namespace KSY
         public void Awake()
         {
             Instance = this;
-
+            scoreManager = GetComponent<ScoreManager>();
             weaponLevel = 3;
             currentWeapon = EWeaponType.Weapon1;
             weaponDamages = new Dictionary<EWeaponType, float>();
@@ -93,8 +98,9 @@ namespace KSY
             CheckSpawnCount();
         }
 
-        private void Events_MinusScoreEvent()
+        private void Events_MinusScoreEvent(float score)
         {
+            scoreManager.Health -= score;
             minusCount++;
             CheckSpawnCount();
         }
@@ -175,6 +181,8 @@ namespace KSY
 
         public void RemoveEnemyObj(GameObject obj)
         {
+            particle.transform.position = obj.transform.position;
+            particle.SetActive(true);
             Managers.Pool.Push(obj.GetComponent<Poolable>());  
         }
 

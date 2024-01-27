@@ -7,14 +7,11 @@ namespace KSY
 {
     public class Enemy : MonoBehaviour
     {
+        [SerializeField] 
+        private int clickHp;
 
-        private float moveSpeed;
-
-        // ��� Ŭ�� Ƚ��
-        [SerializeField] private int clickHp;
-
-        // end�� ����, �����Ҷ� ������ ������
-        private float damage;
+        [SerializeField]
+        protected float damage;
 
         private SpriteRenderer spriteRender;
 
@@ -63,8 +60,9 @@ namespace KSY
             }
         }
 
-
         [SerializeField]
+        private float moveSpeed;
+
         public float MoveSpeed
         {
             get { return moveSpeed; }
@@ -76,8 +74,6 @@ namespace KSY
 
         public void Start()
         {
-            //TestData
-            moveSpeed = 14;
             spriteRender = gameObject.GetComponent<SpriteRenderer>();
             Init();
         }
@@ -107,18 +103,11 @@ namespace KSY
             }        
         }
 
-        private void OnMouseDown()
-        {
-            //TODO : ������ �� ���⿡ ���� hp ���� �ǵ��� ����
-            Managers.Events.PlusScoreInvoke();
-            GameManager.Instance.RemoveEnemyObj(gameObject);
-        }
-
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.CompareTag("EndSensor"))
             {
-                Managers.Events.MinusScoreInvoke();
+                Managers.Events.MinusScoreInvoke(damage);
                 GameManager.Instance.RemoveEnemyObj(gameObject);
             }
         }

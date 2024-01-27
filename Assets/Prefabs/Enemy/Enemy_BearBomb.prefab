@@ -149,10 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a1ac358e1bf814da42bb8f296e4e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickHp: 0
+  clickHp: 8
+  damage: 20
   moveIdx: 0
   enemyType: 2
   spawnerIdx: 0
+  moveSpeed: 14
   minTime: 2
   maxTime: 5
   bombTime: 0

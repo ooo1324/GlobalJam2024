@@ -165,6 +165,7 @@ MonoBehaviour:
   - {fileID: 831235961}
   - {fileID: 790934371}
   - {fileID: 923652455}
+  bossSpawnPos: []
 --- !u!4 &11780176
 Transform:
   m_ObjectHideFlags: 0
@@ -2574,12 +2575,16 @@ MonoBehaviour:
   spawnRate: 0.8
   rotateAngle: 0
   spawnPrefabs:
+  - {fileID: 3988682555338751173, guid: 44232ad53e3ed1a4f9f3a3bf904761af, type: 3}
   - {fileID: 3988682555338751173, guid: 5dec58add2ef2204f902a95e53af1177, type: 3}
+  - {fileID: 1494430820161803138, guid: e6a18a5e94314bd429a38f481fdf63c5, type: 3}
   spawnPos:
   - {fileID: 160670612}
   - {fileID: 1443639479}
   - {fileID: 1843454627}
   - {fileID: 876276952}
+  bossSpawnPos: {fileID: 0}
+  spawnBossPrefabs: []
   spawnMaxCnt: 0
   spawnCurrCnt: 0
 --- !u!4 &869106109
@@ -5663,6 +5668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1891598488}
   - component: {fileID: 1891598487}
+  - component: {fileID: 1891598489}
   m_Layer: 0
   m_Name: '@GameManager'
   m_TagString: Untagged
@@ -5692,6 +5698,8 @@ MonoBehaviour:
   spawner: {fileID: 0}
   roadSpawner: {fileID: 0}
   timeText: {fileID: 1424567845}
+  particle: {fileID: 0}
+  dmg: 0
 --- !u!4 &1891598488
 Transform:
   m_ObjectHideFlags: 0
@@ -5707,6 +5715,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1891598489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891598486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba5ed14e229d7946a0b9e9c53d8ee8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  girlSprites:
+  - {fileID: 21300000, guid: 208dd325526f6e04681a0e94114f26a5, type: 3}
+  - {fileID: 21300000, guid: 9f9c545ece19fe04cafaf30aba89d58e, type: 3}
+  - {fileID: 21300000, guid: fa5c1df15f9c356499adfe94a760c3d7, type: 3}
+  - {fileID: 21300000, guid: 4aeb90f7e1a8de94caa4df9fd30c701f, type: 3}
+  - {fileID: 21300000, guid: e2b682f4c99660e43a26843c385e5565, type: 3}
+  - {fileID: 21300000, guid: 1367ad42b5ef6294a9d6be2534c7fe69, type: 3}
+  uiImage: {fileID: 978012802}
 --- !u!1 &1894616707
 GameObject:
   m_ObjectHideFlags: 0
@@ -6396,11 +6425,7 @@ MonoBehaviour:
   - {fileID: 1821565880}
   - {fileID: 730990752}
   - {fileID: 104787841}
-  camAnimators:
-  - {fileID: 2140840986}
-  - {fileID: 723401688}
-  - {fileID: 612303290}
-  - {fileID: 340765297}
+  lightImg: []
 --- !u!4 &2097505797
 Transform:
   m_ObjectHideFlags: 0
