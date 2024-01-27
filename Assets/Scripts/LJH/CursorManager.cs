@@ -56,12 +56,20 @@ namespace LJH{
                     break;
                     
                     case 1: //wand
-                        attackMoation.GetComponent<Animator>().SetBool("Wand",true);
+                        
                     break;
 
                     case 2: //gun
                         attackMoation.GetComponent<Animator>().SetBool("Gun",true);
                     break;
+                }
+            }
+            if(Input.GetMouseButtonUp(0)){
+                if(nowWeponNum == 1){
+                    GameObject attackMoation = Instantiate(attackMotionPrefab, 
+                    new Vector3(EffectManager.Instance.mousePos.x, EffectManager.Instance.mousePos.y - 2f, 0f), 
+                    Quaternion.identity, attackMotionGroup);
+                    attackMoation.GetComponent<Animator>().SetBool("Wand",true);
                 }
             }
         }
