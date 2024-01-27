@@ -68,8 +68,6 @@ namespace LJH{
 
         void CursorChange()
         {
-            // float wheelInput = Input.GetAxisRaw("Mouse ScrollWheel");
-            // if(wheelInput < -0.1f){//wheel down
             if(Input.GetKeyDown(KeyCode.Q)){
                 nowWeponNum -= 1;
                 if(nowWeponNum < 0) {
@@ -77,7 +75,6 @@ namespace LJH{
                 }
                 Cursor.SetCursor(cursorIcon[nowWeponNum],Vector2.zero, CursorMode.Auto);
             }
-            // if(wheelInput > 0.1f){//wheel up
             if(Input.GetKeyDown(KeyCode.E)){
                 nowWeponNum += 1;
                 if(nowWeponNum > GameManager.Instance.weaponLevel - 1){
