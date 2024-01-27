@@ -57,9 +57,17 @@ namespace KSY
                 int randIdx = UnityEngine.Random.Range(0, spawnPos.Length);
                 int randSpawnIdx = UnityEngine.Random.Range(0, spawnPrefabs.Length);
                 Poolable obj = Managers.Pool.Pop(spawnPrefabs[randSpawnIdx], gameObject.transform);
+                
                 Enemy enemy = obj.gameObject.GetComponent<Enemy>();
                 enemy.wayPointPos = wayPoint[randIdx].wayPointPos;
                 enemy.Init();
+
+                if (enemy.EnemyType == EEnemyType.TeddyBear_Bomb)
+                {
+                    EnemyBomb enemyBomb = obj.gameObject.GetComponent<EnemyBomb>();
+                    enemyBomb.StartBomb();
+                }
+
                 obj.gameObject.transform.position = spawnPos[randIdx].transform.position;
                 Managers.Events.AddEnemyInvoke();
                 spawnCurrCnt++;

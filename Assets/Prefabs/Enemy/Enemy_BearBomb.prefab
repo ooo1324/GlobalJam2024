@@ -152,8 +152,10 @@ MonoBehaviour:
   enemyType: 2
   wayPointPos: []
   spawnerIdx: 0
-  minTime: 0
-  maxTime: 0
+  minTime: 2
+  maxTime: 5
+  bombTime: 0
+  timeSec: 0
 --- !u!95 &7336591653750434736
 Animator:
   serializedVersion: 5

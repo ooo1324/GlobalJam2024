@@ -64,7 +64,7 @@ namespace KSY
             }
         }
 
-        void Start()
+        public void Start()
         {
             //TestData
             moveSpeed = 14;
