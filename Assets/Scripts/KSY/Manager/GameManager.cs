@@ -145,10 +145,7 @@ namespace KSY
             timeText.Time = timeSec;
 
             currWave++;
-           // spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
-
-            //Test
-            spawner.BossSpawn(0);
+            spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
 
             if (currWave == 2)
             {

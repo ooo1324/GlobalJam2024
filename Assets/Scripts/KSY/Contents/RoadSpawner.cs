@@ -36,7 +36,7 @@ namespace KSY
             {         
                 int ranIdx = Random.Range(0, 4);
                 obj.transform.position = bossSpawnPos[enemy.SpawnerIdx].transform.position;
-                enemy.WayPointPos = bossSpawnPos[enemy.SpawnerIdx].GetComponent<Enemy>().WayPointPos;
+                enemy.WayPointPos = bossSpawnPos[enemy.SpawnerIdx].GetComponent<WayPoint>().wayPointPos;
                 enemy.MoveIdx = 0;
             }
             else
