@@ -26,7 +26,7 @@ namespace LJH{
         void Update()
         {   
             //어쨌든 마우스 포지션만 얻을 수 있으면 끝난다.
-            mousePos = nowCam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(5.7f, 3f, Input.mousePosition.z); //뒤의 vector는 영점조절
+            mousePos = nowCam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(10f, 3f, Input.mousePosition.z); //뒤의 vector는 영점조절
             this.transform.position = mousePos;
         }
     }
