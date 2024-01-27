@@ -109,18 +109,9 @@ namespace KSY
 
         private void OnMouseDown()
         {
-            // if(clickHp > 0){
-            //     print("click");
-            //     HPBarScript hp = GetComponent<HPBarScript>();
-            //     clickHp -= 1;
-            //     hp.hpCell.RemoveAt(0);
-            //     Destroy(hp.transform.GetChild(0));
-            // }
-            // else{
-                //TODO : ������ �� ���⿡ ���� hp ���� �ǵ��� ����
-                Managers.Events.MinusEnemyInvoke();
-                GameManager.Instance.RemoveEnemyObj(gameObject);
-            // }
+            //TODO : ������ �� ���⿡ ���� hp ���� �ǵ��� ����
+            Managers.Events.MinusEnemyInvoke();
+            GameManager.Instance.RemoveEnemyObj(gameObject);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -133,5 +124,12 @@ namespace KSY
         }
 
         protected virtual void ChildUpdate() { }
+
+        public void minusHP(int _dmg){
+            clickHp -= _dmg;
+        }
+        public int GetHP(){
+            return clickHp;
+        }
     } 
 }
