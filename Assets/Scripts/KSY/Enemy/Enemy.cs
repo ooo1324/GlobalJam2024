@@ -9,10 +9,10 @@ namespace KSY
 
         private float moveSpeed;
 
-        // »ç¸Á Å¬¸¯ È½¼ö
+        // ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ È½ï¿½ï¿½
         private int clickHp;
 
-        // end¿¡ µµ´Þ, ÀÚÆøÇÒ¶§ ÀÔÈ÷´Â µ¥¹ÌÁö
+        // endï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private float damage;
 
         private SpriteRenderer spriteRender;
@@ -39,7 +39,7 @@ namespace KSY
             }
         }
 
-        // ÀÌµ¿ Æ÷ÀÎÆ®
+        // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
         public Vector3[] wayPointPos;
 
         [SerializeField]
@@ -85,7 +85,7 @@ namespace KSY
 
         void MovePath()
         {
-            // Waypoint ³¡¿¡ µµ´ÞÇßÀ» ¶§ Ã³¸®
+            // Waypoint ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã³ï¿½ï¿½
             if (moveIdx == wayPointPos.Length)
                 return;
             spriteRender.flipX = (transform.position.x - wayPointPos[moveIdx].x) < 0;
@@ -99,7 +99,7 @@ namespace KSY
 
         private void OnMouseDown()
         {
-            //TODO : ´­·¶À» ¶§ ¹«±â¿¡ µû¶ó hp °¨¼Ò µÇµµ·Ï ¼öÁ¤
+            //TODO : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½ hp ï¿½ï¿½ï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Managers.Events.MinusEnemyInvoke();
             GameManager.Instance.RemoveEnemyObj(gameObject);
         }

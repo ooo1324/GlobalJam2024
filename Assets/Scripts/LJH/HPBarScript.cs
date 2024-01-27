@@ -7,13 +7,14 @@ using UnityEngine;
 namespace LJH{
     public class HPBarScript : MonoBehaviour
     {
-        [SerializeField] GameObject hp;
+        [SerializeField] List<GameObject> hpCell = new();
+        [SerializeField] GameObject hpParent;
 
-        [SerializeField] List<GameObject> hpBars = new();
-        [SerializeField] List<Transform> targetTransform = new();
-
-        
-        
+        private void Start() {
+            for(int i =0; i < hpParent.transform.childCount ; i++){
+                hpCell.Add(hpParent.transform.GetChild(i).gameObject);
+            }
+        }
     }
 }
 
