@@ -13,7 +13,7 @@ namespace LJH{
         // Update is called once per frame
         void Update()
         {
-            this.transform.localPosition = Camera.main.WorldToScreenPoint(EffectManager.Instance.mousePos) - new Vector3(800f,800f,0);
+            this.transform.localPosition = Camera.main.WorldToScreenPoint(EffectManager.Instance.mousePos) - new Vector3(600f,800f,0);
             if(CursorManager.Instance.nowWeponNum == 1){
                 wandGuageSlider.gameObject.SetActive(true);
                 if(Input.GetMouseButton(0)){
