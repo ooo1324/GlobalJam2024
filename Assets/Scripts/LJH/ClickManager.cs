@@ -28,20 +28,20 @@ public class ClickManager : MonoBehaviour
                 //충돌했다면
                 if(hit.collider.tag == "Enemy"){ //적이라면
                     Enemy enemy = hit.transform.GetComponent<Enemy>();
-                    if(enemy.GetHP() > 1){
-                        enemy.minusHP(1); //hp 1 감소
+                    if(enemy.GetHP() > GameManager.Instance.dmg){ //데미지 초과의 hp가 남아있을땐
+                        enemy.minusHP(GameManager.Instance.dmg); //hp 감소
 
                         HPBarScript hpbar = hit.transform.GetComponent<HPBarScript>();
                         Destroy(hpbar.hpPop()); //객체 파괴
-                    } else{ //hp가 없다면
+                    } else{ //hp가 부족하다면 
                         Destroy(hit.collider.gameObject); //enemy를 파괴
                     }
                 }
 
                 if(hit.collider.tag == "EnemyBoss"){
                     Enemy enemy = hit.transform.GetComponent<Enemy>();
-                    if(enemy.GetHP() > 1){
-                        enemy.minusHP(1);
+                    if(enemy.GetHP() > GameManager.Instance.dmg){
+                        enemy.minusHP(GameManager.Instance.dmg);
 
                         HPBarScript hPBar = hit.transform.GetComponent<HPBarScript>();
                         if(enemy.GetHP() % 10 == 0){ //보스는 10단위로 hp Cell 제거
