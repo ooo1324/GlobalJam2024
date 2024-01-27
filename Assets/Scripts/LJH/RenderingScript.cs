@@ -8,8 +8,8 @@ namespace LJH{
     public class RenderingScript : MonoBehaviour
     {
         [SerializeField] List<GameObject> virtuarCameras = new();
-        [SerializeField] List<Animator> camAnimators = new();
 
+        [SerializeField] List<Image> lightImg = new();
         // [SerializeField] List<BoxCollider2D> screenColliders = new();
 
         // Update is called once per frame
@@ -21,15 +21,10 @@ namespace LJH{
                 virtuarCameras[2].SetActive(false);
                 virtuarCameras[3].SetActive(false);
 
-                camAnimators[0].SetBool("Close",false);
-                camAnimators[1].SetBool("Close",true);
-                camAnimators[2].SetBool("Close",true);
-                camAnimators[3].SetBool("Close",true);
-                
-                // screenColliders[0].size = new Vector2(1500,1500);
-                // screenColliders[1].size = new Vector2(275,275);
-                // screenColliders[2].size = new Vector2(275,275);
-                // screenColliders[3].size = new Vector2(275,275);
+                lightImg[0].color = Color.green;
+                lightImg[1].color = Color.red;
+                lightImg[2].color = Color.red;
+                lightImg[3].color = Color.red;
 
             }
             if(Input.GetKeyDown(KeyCode.Alpha2)){
@@ -38,15 +33,11 @@ namespace LJH{
                 virtuarCameras[2].SetActive(false);
                 virtuarCameras[3].SetActive(false);
 
-                camAnimators[0].SetBool("Close",true);
-                camAnimators[1].SetBool("Close",false);
-                camAnimators[2].SetBool("Close",true);
-                camAnimators[3].SetBool("Close",true);
-
-                // screenColliders[0].size = new Vector2(275,275);
-                // screenColliders[1].size = new Vector2(1500,1500);
-                // screenColliders[2].size = new Vector2(275,275);
-                // screenColliders[3].size = new Vector2(275,275);
+                lightImg[0].color = Color.red;
+                lightImg[1].color = Color.green;
+                lightImg[2].color = Color.red;
+                lightImg[3].color = Color.red;
+        
             }
             if(Input.GetKeyDown(KeyCode.Alpha3)){
                 virtuarCameras[0].SetActive(false);
@@ -54,15 +45,11 @@ namespace LJH{
                 virtuarCameras[2].SetActive(true);
                 virtuarCameras[3].SetActive(false);
 
-                camAnimators[0].SetBool("Close",true);
-                camAnimators[1].SetBool("Close",true);
-                camAnimators[2].SetBool("Close",false);
-                camAnimators[3].SetBool("Close",true);
-
-                // screenColliders[0].size = new Vector2(275,275);
-                // screenColliders[1].size = new Vector2(275,275);
-                // screenColliders[2].size = new Vector2(1500,1500);
-                // screenColliders[3].size = new Vector2(275,275);
+                lightImg[0].color = Color.red;
+                lightImg[1].color = Color.red;
+                lightImg[2].color = Color.green;
+                lightImg[3].color = Color.red;
+                
             }
             if(Input.GetKeyDown(KeyCode.Alpha4)){
                 virtuarCameras[0].SetActive(false);
@@ -70,15 +57,10 @@ namespace LJH{
                 virtuarCameras[2].SetActive(false);
                 virtuarCameras[3].SetActive(true);
                 
-                camAnimators[0].SetBool("Close",true);
-                camAnimators[1].SetBool("Close",true);
-                camAnimators[2].SetBool("Close",true);
-                camAnimators[3].SetBool("Close",false);
-
-                // screenColliders[0].size = new Vector2(275,275);
-                // screenColliders[1].size = new Vector2(275,275);
-                // screenColliders[2].size = new Vector2(275,275);
-                // screenColliders[3].size = new Vector2(1500,1500);
+                lightImg[0].color = Color.red;
+                lightImg[1].color = Color.red;
+                lightImg[2].color = Color.red;
+                lightImg[3].color = Color.green;
             }
 
         }
