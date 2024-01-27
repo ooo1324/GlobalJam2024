@@ -15,6 +15,6 @@ namespace KSY
         GiftBox,
         TeddyBear,
         TeddyBear_Bomb,
-        Boss_Pierrot
+        Clown_Boss
     }
 }

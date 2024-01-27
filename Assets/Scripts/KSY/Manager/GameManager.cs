@@ -128,7 +128,8 @@ namespace KSY
             {
                 maxSpawnCount += spawnList[i];
             }
-      
+            // Boss Count Ãß°¡
+            maxSpawnCount++;
             currWave = -1;
             StartWave();
         }
@@ -139,11 +140,17 @@ namespace KSY
             {
                 return;
             }
+
             timeSec = 0;
             timeText.Time = timeSec;
 
             currWave++;
             spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
+            if (currWave == 2)
+            {
+                spawner.BossSpawn(0);
+                //spawner.BossSpawn(currStage);
+            }
         }
 
         public void WaveTimeStart()

@@ -21,6 +21,12 @@ namespace KSY
         private GameObject[] spawnPos;
 
         [SerializeField]
+        private GameObject bossSpawnPos;
+
+        [SerializeField]
+        private GameObject[] spawnBossPrefabs;
+
+        [SerializeField]
         private int spawnMaxCnt;
 
         [SerializeField]
@@ -50,6 +56,15 @@ namespace KSY
             StopCoroutine(Spawn());
         }
 
+        public void BossSpawn(int bossIdx)
+        {
+            Poolable obj = Managers.Pool.Pop(spawnBossPrefabs[bossIdx], gameObject.transform);
+            Managers.Events.AddEnemyInvoke();
+            Enemy enemy = obj.gameObject.GetComponent<Enemy>();
+            enemy.wayPointPos = bossSpawnPos.GetComponent<WayPoint>().wayPointPos;
+            obj.gameObject.transform.position = bossSpawnPos.transform.position;
+        }
+
         IEnumerator Spawn()
         {
             while (spawnCurrCnt < spawnMaxCnt)
@@ -59,16 +74,16 @@ namespace KSY
                 Poolable obj = Managers.Pool.Pop(spawnPrefabs[randSpawnIdx], gameObject.transform);
                 
                 Enemy enemy = obj.gameObject.GetComponent<Enemy>();
-                enemy.wayPointPos = wayPoint[randIdx].wayPointPos;
-                enemy.Init();
 
+                enemy.wayPointPos = wayPoint[randIdx].wayPointPos;
+                obj.gameObject.transform.position = spawnPos[randIdx].transform.position;
                 if (enemy.EnemyType == EEnemyType.TeddyBear_Bomb)
                 {
                     EnemyBomb enemyBomb = obj.gameObject.GetComponent<EnemyBomb>();
                     enemyBomb.StartBomb();
                 }
 
-                obj.gameObject.transform.position = spawnPos[randIdx].transform.position;
+                enemy.Init();
                 Managers.Events.AddEnemyInvoke();
                 spawnCurrCnt++;
 
