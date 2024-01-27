@@ -9,6 +9,7 @@ namespace LJH{
     public class GuageScript : MonoBehaviour
     {
         [SerializeField] Slider wandGuageSlider;
+        [SerializeField] GameObject wandCollider;
 
         // Update is called once per frame
         void Update()
@@ -22,8 +23,12 @@ namespace LJH{
                 if(Input.GetMouseButtonUp(0)){
                     //공격모션
                     //클릭을 떼면 게이지가 0으로 
-                    int wandValue = (int)wandGuageSlider.value;
-                    wandGuageSlider.value = wandGuageSlider.minValue;
+                    if(wandGuageSlider.value == wandGuageSlider.maxValue){
+                        //콜라이더 추가.
+                        wandCollider.SetActive(true);
+                        wandCollider.SetActive(false);
+                        wandGuageSlider.value = wandGuageSlider.minValue;
+                    }
                 }
             }
             else{
