@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - EndSensor
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Sensor
+  - MainTexture
   - 
   - 
   - 
@@ -45,4 +43,7 @@ TagManager:
     locked: 0
   - name: Obj
     uniqueID: 3465937855
+    locked: 0
+  - name: Motion
+    uniqueID: 292822521
     locked: 0

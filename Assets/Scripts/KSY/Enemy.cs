@@ -15,6 +15,7 @@ namespace KSY
         // end에 도달, 자폭할때 입히는 데미지
         private float damage;
 
+        private SpriteRenderer spriteRender;
 
         private int moveIdx;
         public int MoveIdx
@@ -34,7 +35,6 @@ namespace KSY
             set
             {
                 enemyType = value;
-                //이미지 변경 필요
             }
         }
 
