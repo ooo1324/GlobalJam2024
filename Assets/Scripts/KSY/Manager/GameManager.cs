@@ -27,6 +27,8 @@ namespace KSY
         [SerializeField]
         public int spawnCount = 0;
 
+        public int weaponLevel;
+
         [SerializeField]
         private int minusCount = 0;
 
@@ -48,6 +50,8 @@ namespace KSY
         public void Awake()
         {
             Instance = this;
+
+            weaponLevel = 3;
             currentWeapon = EWeaponType.Weapon1;
             weaponDamages = new Dictionary<EWeaponType, float>();
 
