@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using LJH;
 using UnityEngine;
 
 public class ClickTest : MonoBehaviour
@@ -15,12 +16,9 @@ public class ClickTest : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, 0f);
-
+            RaycastHit2D hit = Physics2D.Raycast(EffectManager.Instance.mousePos, Vector2.zero, 1f);
             if(hit.collider != null){
-                Debug.Log(hit.transform.name); 
-                //객체 삭제하는 코드 필요.
+                Debug.Log(hit.transform.name);
             }
         }
     }
