@@ -26,19 +26,21 @@ public class ClickManager : MonoBehaviour
             if (hit.collider != null)
             {
                 //충돌했다면
-                if(hit.collider.tag == "Enemy"){ //적이라면
+                if(hit.collider.tag == "Enemy" && (CursorManager.Instance.nowWeponNum == 0 || CursorManager.Instance.nowWeponNum == 2)){ //적이라면
                     Enemy enemy = hit.transform.GetComponent<Enemy>();
                     if(enemy.GetHP() > GameManager.Instance.dmg){ //데미지 초과의 hp가 남아있을땐
                         enemy.minusHP(GameManager.Instance.dmg); //hp 감소
 
                         HPBarScript hpbar = hit.transform.GetComponent<HPBarScript>();
-                        Destroy(hpbar.hpPop()); //객체 파괴
+                        for(int i = 0;i < GameManager.Instance.dmg;i++){
+                            Destroy(hpbar.hpPop()); //객체 파괴
+                        }
                     } else{ //hp가 부족하다면 
                         Destroy(hit.collider.gameObject); //enemy를 파괴
                     }
                 }
 
-                if(hit.collider.tag == "EnemyBoss"){
+                if(hit.collider.tag == "EnemyBoss" && (CursorManager.Instance.nowWeponNum == 0 || CursorManager.Instance.nowWeponNum == 2)){
                     Enemy enemy = hit.transform.GetComponent<Enemy>();
                     if(enemy.GetHP() > GameManager.Instance.dmg){
                         enemy.minusHP(GameManager.Instance.dmg);
