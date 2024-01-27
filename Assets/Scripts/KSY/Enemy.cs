@@ -8,6 +8,16 @@ namespace KSY
     {
         private float moveSpeed;
 
+        // 사망 클릭 횟수
+        private float hp;
+
+        // end에 도달, 자폭할때 입히는 데미지
+        private float damage;
+
+        private int moveIdx;
+
+        // 이동 포인트
+        public Vector3[] wayPointPos;
 
         [SerializeField]
         public float MoveSpeed
@@ -19,21 +29,35 @@ namespace KSY
             }
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             //TestData
             moveSpeed = 3;
+            moveIdx = 0;
         }
 
-        // Update is called once per frame
         void Update()
         {
-            transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            MovePath();
+            //transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        }
+
+        void MovePath()
+        {
+            // Waypoint 끝에 도달했을 때 처리
+            if (moveIdx == wayPointPos.Length)
+                return;
+
+            transform.position = Vector2.MoveTowards(transform.position, wayPointPos[moveIdx], MoveSpeed * Time.deltaTime);
+
+            if (transform.position == wayPointPos[moveIdx])
+                moveIdx++;
+
         }
 
         private void OnMouseDown()
         {
+            //TODO : 눌렀을 때 무기에 따라 hp 감소 되도록 수정
             Poolable poolable = gameObject.GetComponent<Poolable>();
             Managers.Pool.Push(poolable);
             gameObject.SetActive(false);

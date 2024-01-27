@@ -6,19 +6,22 @@ namespace KSY
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField]
+        public EWeaponType currentWeapon;
 
+        [SerializeField]
+        public Dictionary<EWeaponType, float> weaponDamages;
 
-        // Start is called before the first frame update
-        void Start()
+        
+
+        private void Start()
         {
+            currentWeapon = EWeaponType.Weapon1;
+            weaponDamages = new Dictionary<EWeaponType, float>();
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            weaponDamages.Add(EWeaponType.Weapon1, 1);
+            weaponDamages.Add(EWeaponType.Weapon2, 2);
+            weaponDamages.Add(EWeaponType.Weapon3, 3);
         }
     }
-
 }

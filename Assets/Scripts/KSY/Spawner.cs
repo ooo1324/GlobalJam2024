@@ -14,9 +14,13 @@ namespace KSY
 
         [SerializeField]
         private GameObject spawnPrefab;
-        
+
+        private WayPoint wayPoint;
+
+
         void Start()
         {
+            wayPoint = GetComponent<WayPoint>();
             StartCoroutine(Spawn());
         }
 
@@ -25,12 +29,14 @@ namespace KSY
             while (true)
             {
                 Poolable obj = Managers.Pool.Pop(spawnPrefab, gameObject.transform);
-
+                obj.gameObject.GetComponent<Enemy>().wayPointPos = wayPoint.wayPointPos;
                 obj.gameObject.transform.position = gameObject.transform.position;
-                
+     
+
                 yield return new WaitForSeconds(spawnRate);
             }      
         }
+
     }
 
 }
