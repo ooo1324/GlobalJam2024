@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace LJH{
+    //이펙트매니저는 마우스를 따라다니고, 클릭 시 이팩트 발생하게 해야함.
     public class EffectManager : MonoBehaviour
     {
         #region Instance

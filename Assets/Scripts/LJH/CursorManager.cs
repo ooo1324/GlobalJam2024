@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using KSY;
+using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
@@ -10,17 +12,20 @@ namespace LJH{
 
         public List<Texture2D> cursorIcon = new();
         public List<GameObject> selectImg = new();
+        public List<GameObject> lockImg = new();
         [SerializeField] int nowWeponNum = 0;
         // Start is called before the first frame update
         void Start()
         {
             Cursor.SetCursor(cursorIcon[0],Vector2.zero, CursorMode.Auto);//게임 시작했을 땐, 커서를 0으로
+            LevelSet();
         }
 
         // Update is called once per frame
         void Update()
         {
             CursorChange();
+
             
         }
 
@@ -30,13 +35,13 @@ namespace LJH{
             if(wheelInput < -0.1f){//wheel down
                 nowWeponNum -= 1;
                 if(nowWeponNum < 0) {
-                     nowWeponNum = cursorIcon.Count - 1;
+                     nowWeponNum = GameManager.Instance.weaponLevel - 1;
                 }
                 Cursor.SetCursor(cursorIcon[nowWeponNum],Vector2.zero, CursorMode.Auto);
             }
             if(wheelInput > 0.1f){//wheel up
                 nowWeponNum += 1;
-                if(nowWeponNum > cursorIcon.Count - 1){
+                if(nowWeponNum > GameManager.Instance.weaponLevel - 1){
                     nowWeponNum = 0;
                 }
                 Cursor.SetCursor(cursorIcon[nowWeponNum],Vector2.zero, CursorMode.Auto);
@@ -49,7 +54,13 @@ namespace LJH{
                     selectImg[i].SetActive(false);
                 }
             }
-        }        
+        }
+
+        public void LevelSet(){
+            for(int i = 0;i < GameManager.Instance.weaponLevel - 1;i++){
+                lockImg[i].SetActive(false);
+            }
+        }       
     }
 
 }
