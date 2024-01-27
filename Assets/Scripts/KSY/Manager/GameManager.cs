@@ -10,6 +10,9 @@ namespace KSY
         public static GameManager Instance;
 
         [SerializeField]
+        public float timeSec = 0;
+
+        [SerializeField]
         public EWeaponType currentWeapon;
 
         [SerializeField]
@@ -30,10 +33,14 @@ namespace KSY
         [SerializeField]
         private RoadSpawner roadSpawner;
 
+        [SerializeField]
+        private TimeText timeText;
+
         private List<StageInfo> stageInfoList;
 
         private List<GameObject> enemyObjList;
 
+        private float maxTime = 0;
 
         public void Awake()
         {
@@ -48,8 +55,11 @@ namespace KSY
 
             // 스테이지 정보 입력
             stageInfoList = new List<StageInfo>();
-            stageInfoList.Add(new StageInfo(new List<int> { 15, 20, 25 }));
+            stageInfoList.Add(new StageInfo(5, new List<int> { 15, 20, 25 }));
+            stageInfoList.Add(new StageInfo(5, new List<int> { 20, 30, 40 }));
+            stageInfoList.Add(new StageInfo(5, new List<int> { 30, 40, 50 }));
 
+            #region spawner
             GameObject spawnerObj = GameObject.Find("@Spawner");
             GameObject roadSpawnerObj = GameObject.Find("@RoadSpawner");
 
@@ -61,10 +71,12 @@ namespace KSY
 
             roadSpawner = roadSpawnerObj.GetComponent<RoadSpawner>();
             spawner = spawnerObj.GetComponent<Spawner>();
+            #endregion
         }
 
         private void Start()
         {
+            currStage = -1;
             StartStage();
         }
 
@@ -72,13 +84,29 @@ namespace KSY
         {
             enemyObjList.Clear();
             currStage++;
+            maxTime = stageInfoList[currStage].WaveTime;    
+            currWave = -1;
             StartWave();
         }
 
         public void StartWave()
         {
+            if (currWave >= 2)
+            {
+                // TODO: Stage 넘기기
+
+                return;
+            }
             currWave++;
             spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
+        }
+
+        public void WaveTimeStart()
+        {
+            timeSec = 0;
+            timeText.Time = timeSec;
+
+            StartCoroutine(TimeStart());
         }
 
         public void AddEnemyObj(GameObject obj)
@@ -104,6 +132,18 @@ namespace KSY
         public void GameOver()
         {
             
+        }
+
+        IEnumerator TimeStart()
+        {
+            while (timeSec < maxTime)
+            {
+                timeSec += Time.deltaTime;
+                timeText.Time = timeSec;
+                yield return new WaitForFixedUpdate();
+            }
+
+            StartWave();
         }
     }
 }

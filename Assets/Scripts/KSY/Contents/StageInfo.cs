@@ -6,6 +6,13 @@ namespace KSY
 
     public class StageInfo
     {
+        private int waveTime;
+
+        public int WaveTime
+        {
+            get { return waveTime; }
+        }
+
         private List<int> spawnMaxCount = new List<int>();
         public List<int> SpawnMaxCount
         {
@@ -13,8 +20,9 @@ namespace KSY
         }
         
 
-        public StageInfo(List<int> maxCount)
+        public StageInfo(int time, List<int> maxCount)
         {
+            waveTime = time;
             spawnMaxCount = maxCount;
         }
     }

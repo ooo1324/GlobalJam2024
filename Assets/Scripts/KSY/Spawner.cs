@@ -62,7 +62,9 @@ namespace KSY
                 spawnCurrCnt++;
 
                 yield return new WaitForSeconds(spawnRate);
-            }      
+            }
+
+            GameManager.Instance.WaveTimeStart();
         }
     }
 }

@@ -44,7 +44,7 @@ namespace KSY
         {
             //TestData
             spawnerIdx = -1;
-            moveSpeed = 3;
+            moveSpeed = 6;
             moveIdx = 0;
         }
 
