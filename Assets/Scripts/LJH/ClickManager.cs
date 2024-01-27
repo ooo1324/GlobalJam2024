@@ -33,6 +33,8 @@ public class ClickManager : MonoBehaviour
 
                         HPBarScript hpbar = hit.transform.GetComponent<HPBarScript>();
                         Destroy(hpbar.hpPop()); //객체 파괴
+                    } else{ //hp가 없다면
+                        Destroy(hit.collider.gameObject); //enemy를 파괴
                     }
                 }
             }
