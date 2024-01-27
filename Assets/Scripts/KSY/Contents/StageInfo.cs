@@ -13,6 +13,12 @@ namespace KSY
             get { return waveTime; }
         }
 
+        private float spawnRate;
+        public float SpawnRate
+        {
+            get { return spawnRate; }
+        }
+
         private List<int> spawnMaxCount = new List<int>();
         public List<int> SpawnMaxCount
         {
@@ -20,9 +26,10 @@ namespace KSY
         }
         
 
-        public StageInfo(int time, List<int> maxCount)
+        public StageInfo(int time, float spawnRate, List<int> maxCount)
         {
             waveTime = time;
+            this.spawnRate = spawnRate;
             spawnMaxCount = maxCount;
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,11 @@ namespace KSY
 
         #region Managers
         private PoolManager _poolManager = new PoolManager();
+        private Events _events = new Events();
 
         public static PoolManager Pool { get { return Instance._poolManager; } }
+        public static Events Events { get { return Instance._events; } }
+
         #endregion
 
         private static string managersName = "@Managers";

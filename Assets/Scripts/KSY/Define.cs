@@ -9,4 +9,12 @@ namespace KSY
         Weapon2,
         Weapon3
     }
+
+    public enum EEnemyType
+    {
+        GiftBox,
+        TeddyBear,
+        TeddyBear_Bomb,
+        Boss_Pierrot
+    }
 }

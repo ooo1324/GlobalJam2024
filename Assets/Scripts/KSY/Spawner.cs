@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace KSY
     {
 
         [SerializeField]
-        private float spawnRate;
+        public float spawnRate;
 
         [SerializeField]
         private int rotateAngle;
@@ -34,7 +35,7 @@ namespace KSY
             for (int i = 0; i < spawnPos.Length; i++)
             {
                 wayPoint.Add(spawnPos[i].GetComponent<WayPoint>());
-            }                   
+            }       
         }
 
         public void StartSpawn(int cnt)
@@ -53,12 +54,13 @@ namespace KSY
         {
             while (spawnCurrCnt < spawnMaxCnt)
             {
-                int randIdx = Random.Range(0, spawnPos.Length);
-                Poolable obj = Managers.Pool.Pop(spawnPrefab, spawnPos[randIdx].transform);
-                obj.gameObject.GetComponent<Enemy>().wayPointPos = wayPoint[randIdx].wayPointPos;
+                int randIdx = UnityEngine.Random.Range(0, spawnPos.Length);
+                Poolable obj = Managers.Pool.Pop(spawnPrefab, gameObject.transform);
+                Enemy enemy = obj.gameObject.GetComponent<Enemy>();
+                enemy.wayPointPos = wayPoint[randIdx].wayPointPos;
+                enemy.Init();
                 obj.gameObject.transform.position = spawnPos[randIdx].transform.position;
-                GameManager.Instance.AddEnemyObj(obj.gameObject);
-
+                Managers.Events.AddEnemyInvoke();
                 spawnCurrCnt++;
 
                 yield return new WaitForSeconds(spawnRate);

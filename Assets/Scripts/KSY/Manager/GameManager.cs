@@ -25,7 +25,12 @@ namespace KSY
         private int currWave = -1;
 
         [SerializeField]
-        public int spawnMaxCount = 0;
+        public int spawnCount = 0;
+
+        [SerializeField]
+        private int minusCount = 0;
+
+        private int maxSpawnCount = 0;
 
         [SerializeField]
         private Spawner spawner;
@@ -38,8 +43,6 @@ namespace KSY
 
         private List<StageInfo> stageInfoList;
 
-        private List<GameObject> enemyObjList;
-
         private float maxTime = 0;
 
         public void Awake()
@@ -47,7 +50,6 @@ namespace KSY
             Instance = this;
             currentWeapon = EWeaponType.Weapon1;
             weaponDamages = new Dictionary<EWeaponType, float>();
-            enemyObjList = new List<GameObject>();
 
             weaponDamages.Add(EWeaponType.Weapon1, 1);
             weaponDamages.Add(EWeaponType.Weapon2, 2);
@@ -55,9 +57,10 @@ namespace KSY
 
             // 스테이지 정보 입력
             stageInfoList = new List<StageInfo>();
-            stageInfoList.Add(new StageInfo(5, new List<int> { 15, 20, 25 }));
-            stageInfoList.Add(new StageInfo(5, new List<int> { 20, 30, 40 }));
-            stageInfoList.Add(new StageInfo(5, new List<int> { 30, 40, 50 }));
+ 
+            stageInfoList.Add(new StageInfo(5, 1f, new List<int> { 15, 20, 25 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 20, 30, 40 }));
+            stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 30, 40, 50 }));
 
             #region spawner
             GameObject spawnerObj = GameObject.Find("@Spawner");
@@ -71,7 +74,29 @@ namespace KSY
 
             roadSpawner = roadSpawnerObj.GetComponent<RoadSpawner>();
             spawner = spawnerObj.GetComponent<Spawner>();
+
+            Managers.Events.AddEnemyEvent += Spawner_AddEnemyEvent;
+            Managers.Events.MinusEnemyEvent += Events_MinusEnemyEvent;
             #endregion
+        }
+
+        private void Events_MinusEnemyEvent()
+        {
+            minusCount++;
+
+            // 모든 객체 삭제
+            if (maxSpawnCount <= minusCount)
+            {
+                Debug.Log("Next Stage");
+
+                // Stage 넘기기
+                StartStage();
+            }
+        }
+
+        private void Spawner_AddEnemyEvent()
+        {
+            spawnCount++;
         }
 
         private void Start()
@@ -82,9 +107,24 @@ namespace KSY
 
         public void StartStage()
         {
-            enemyObjList.Clear();
+            if (currStage >= 2)
+            {
+                // TODO : Game Ending
+                return;
+            }
+            spawnCount = 0;
+            minusCount = 0;
+            //enemyObjList.Clear();       
             currStage++;
-            maxTime = stageInfoList[currStage].WaveTime;    
+            spawner.spawnRate = stageInfoList[currStage].SpawnRate;
+            maxTime = stageInfoList[currStage].WaveTime;
+
+            List<int> spawnList = stageInfoList[currStage].SpawnMaxCount;
+            for (int i = 0; i < spawnList.Count; i++)
+            {
+                maxSpawnCount += spawnList[i];
+            }
+      
             currWave = -1;
             StartWave();
         }
@@ -93,30 +133,24 @@ namespace KSY
         {
             if (currWave >= 2)
             {
-                // TODO: Stage 넘기기
-
                 return;
             }
+            timeSec = 0;
+            timeText.Time = timeSec;
+
             currWave++;
             spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
         }
 
         public void WaveTimeStart()
         {
-            timeSec = 0;
-            timeText.Time = timeSec;
-
             StartCoroutine(TimeStart());
         }
 
-        public void AddEnemyObj(GameObject obj)
-        {
-            enemyObjList.Add(obj);
-        }
 
         public void RemoveEnemyObj(GameObject obj)
         {
-            enemyObjList.Remove(obj);
+            Managers.Pool.Push(obj.GetComponent<Poolable>());  
         }
 
         public void SpawnerMove(GameObject obj)

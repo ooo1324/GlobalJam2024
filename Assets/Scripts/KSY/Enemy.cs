@@ -6,19 +6,42 @@ namespace KSY
 {
     public class Enemy : MonoBehaviour
     {
+
         private float moveSpeed;
 
         // 사망 클릭 횟수
-        private float hp;
+        private int clickHp;
 
         // end에 도달, 자폭할때 입히는 데미지
         private float damage;
 
+
         private int moveIdx;
+        public int MoveIdx
+        {
+            get { return moveIdx; }
+            set
+            {
+                moveIdx = value;
+            }
+        }
+
+        private EEnemyType enemyType;
+        
+        public EEnemyType EnemyType
+        {
+            get { return enemyType; }
+            set
+            {
+                enemyType = value;
+                //이미지 변경 필요
+            }
+        }
 
         // 이동 포인트
         public Vector3[] wayPointPos;
 
+        [SerializeField]
         private int spawnerIdx;
         public int SpawnerIdx
         {
@@ -43,11 +66,15 @@ namespace KSY
         void Start()
         {
             //TestData
-            spawnerIdx = -1;
-            moveSpeed = 6;
-            moveIdx = 0;
+            moveSpeed = 14;
+            Init();
         }
 
+        public void Init()
+        {
+            spawnerIdx = -1;
+            moveIdx = 0;
+        }
         void Update()
         {
             MovePath();
@@ -69,11 +96,18 @@ namespace KSY
         private void OnMouseDown()
         {
             //TODO : 눌렀을 때 무기에 따라 hp 감소 되도록 수정
-            Poolable poolable = gameObject.GetComponent<Poolable>();
-            Managers.Pool.Push(poolable);
-            gameObject.SetActive(false);
+            Managers.Events.MinusEnemyInvoke();
+            GameManager.Instance.RemoveEnemyObj(gameObject);
         }
 
-        
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("EndSensor"))
+            {
+                Managers.Events.MinusEnemyInvoke();
+                GameManager.Instance.RemoveEnemyObj(gameObject);
+            }
+        }
+
     } 
 }

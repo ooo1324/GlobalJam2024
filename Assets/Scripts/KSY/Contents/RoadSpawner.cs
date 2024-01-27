@@ -24,11 +24,14 @@ namespace KSY
         public void RoadSpawn(GameObject obj)
         {
             Enemy enemy = obj.GetComponent<Enemy>();
-            enemy.SpawnerIdx++;
+            if (enemy.SpawnerIdx >= 2)
+                return;
+            enemy.SpawnerIdx++;            
             int spawnerIdx = enemy.SpawnerIdx * 4;
             int ranIdx = Random.Range(spawnerIdx, spawnerIdx + 4);
             obj.transform.position = spawnPos[ranIdx].transform.position;
             enemy.wayPointPos = wayPoint[ranIdx].wayPointPos;
+            enemy.MoveIdx = 0;
             obj.SetActive(true);          
         }
     }
