@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using LJH;
 using UnityEngine;
 
 namespace KSY
@@ -10,7 +11,7 @@ namespace KSY
         private float moveSpeed;
 
         // ��� Ŭ�� Ƚ��
-        private int clickHp;
+        [SerializeField] private int clickHp;
 
         // end�� ����, �����Ҷ� ������ ������
         private float damage;
@@ -99,9 +100,18 @@ namespace KSY
 
         private void OnMouseDown()
         {
-            //TODO : ������ �� ���⿡ ���� hp ���� �ǵ��� ����
-            Managers.Events.MinusEnemyInvoke();
-            GameManager.Instance.RemoveEnemyObj(gameObject);
+            // if(clickHp > 0){
+            //     print("click");
+            //     HPBarScript hp = GetComponent<HPBarScript>();
+            //     clickHp -= 1;
+            //     hp.hpCell.RemoveAt(0);
+            //     Destroy(hp.transform.GetChild(0));
+            // }
+            // else{
+                //TODO : ������ �� ���⿡ ���� hp ���� �ǵ��� ����
+                Managers.Events.MinusEnemyInvoke();
+                GameManager.Instance.RemoveEnemyObj(gameObject);
+            // }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
