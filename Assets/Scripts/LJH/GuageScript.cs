@@ -21,6 +21,9 @@ namespace LJH{
                 }
                 if(Input.GetMouseButtonUp(0)){
                     //공격모션
+                    //클릭을 떼면 게이지가 0으로 
+                    int wandValue = (int)wandGuageSlider.value;
+                    wandGuageSlider.value = wandGuageSlider.minValue;
                 }
             }
             else{
