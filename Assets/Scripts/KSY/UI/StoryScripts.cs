@@ -40,9 +40,9 @@ public class StoryScripts : MonoBehaviour
     } 
 
     /// <summary>
-    /// ½ºÅä¸® Àç»ý ÇÔ¼ö
+    /// ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     /// </summary>
-    /// <param name="idx">Àç»ý ½ºÅä¸® index</param>
+    /// <param name="idx">ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸® index</param>
     public void StoryStart(int idx)
     {
         if (story.Count > idx)
@@ -64,7 +64,7 @@ public class StoryScripts : MonoBehaviour
         }
         else
         {
-            //SceneManager.LoadScene(AllGameData.Current_Level);
+            SceneManager.LoadScene("GameScene");
         }
     }
 
@@ -75,15 +75,15 @@ public class StoryScripts : MonoBehaviour
 }
 
 /// <summary>
-/// ½ºÅä¸® ±¸Á¶Ã¼
+/// ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½Ã¼
 /// </summary>
 [System.Serializable]
 public struct StoryData
 {
-    //ÇØ´ç ½ºÅä¸®ÀÇ ÀÌ¹ÌÁö
+    //ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
     public Sprite storySprite;
 
-    //ÇØ´ç ½ºÅä¸® ÅØ½ºÆ®_ÇÑ±Û
+    //ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½Ø½ï¿½Æ®_ï¿½Ñ±ï¿½
     [TextArea(3, 5)]
     public string storyText_kor;
 }
