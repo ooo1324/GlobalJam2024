@@ -10,8 +10,9 @@ namespace KSY
         {
             if (collision.CompareTag("Enemy"))
             {
-                GameManager.Instance.RemoveEnemyObj(collision.gameObject);
+                //GameManager.Instance.RemoveEnemyObj(collision.gameObject);
                 collision.gameObject.SetActive(false);
+                GameManager.Instance.SpawnerMove(collision.gameObject);
             }
         }
     }

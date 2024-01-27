@@ -4,19 +4,32 @@ using UnityEngine;
 
 namespace KSY
 {
-
     public class RoadSpawner : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField]
+        private GameObject[] spawnPos;
 
+        private List<WayPoint> wayPoint;
+
+        void Awake()
+        {
+            wayPoint = new List<WayPoint>();
+            for (int i = 0; i < spawnPos.Length; i++)
+            {
+                wayPoint.Add(spawnPos[i].GetComponent<WayPoint>());
+            }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
+        public void RoadSpawn(GameObject obj)
+        {
+            Enemy enemy = obj.GetComponent<Enemy>();
+            enemy.SpawnerIdx++;
+            int spawnerIdx = enemy.SpawnerIdx * 4;
+            int ranIdx = Random.Range(spawnerIdx, spawnerIdx + 4);
+            obj.transform.position = spawnPos[ranIdx].transform.position;
+            enemy.wayPointPos = wayPoint[ranIdx].wayPointPos;
+            obj.SetActive(true);          
         }
     }
 }

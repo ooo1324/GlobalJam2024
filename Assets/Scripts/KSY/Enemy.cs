@@ -19,6 +19,17 @@ namespace KSY
         // 이동 포인트
         public Vector3[] wayPointPos;
 
+        private int spawnerIdx;
+        public int SpawnerIdx
+        {
+            get { return spawnerIdx; }
+            set
+            {
+                spawnerIdx = value;
+            }
+        }
+
+
         [SerializeField]
         public float MoveSpeed
         {
@@ -32,6 +43,7 @@ namespace KSY
         void Start()
         {
             //TestData
+            spawnerIdx = -1;
             moveSpeed = 3;
             moveIdx = 0;
         }
@@ -39,7 +51,6 @@ namespace KSY
         void Update()
         {
             MovePath();
-            //transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         }
 
         void MovePath()
@@ -52,8 +63,8 @@ namespace KSY
 
             if (transform.position == wayPointPos[moveIdx])
                 moveIdx++;
-
         }
+
 
         private void OnMouseDown()
         {
