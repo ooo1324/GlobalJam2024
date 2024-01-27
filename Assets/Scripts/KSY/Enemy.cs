@@ -80,6 +80,7 @@ namespace KSY
         void Update()
         {
             MovePath();
+            ChildUpdate();
         }
 
         void MovePath()
@@ -93,10 +94,8 @@ namespace KSY
             if (transform.position == wayPointPos[moveIdx])
             {
                 moveIdx++;
-            }
-                
+            }        
         }
-
 
         private void OnMouseDown()
         {
@@ -114,5 +113,6 @@ namespace KSY
             }
         }
 
+        protected virtual void ChildUpdate() { }
     } 
 }

@@ -3529,7 +3529,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRate: 0.8
   rotateAngle: 0
-  spawnPrefab: {fileID: 3988682555338751173, guid: 44232ad53e3ed1a4f9f3a3bf904761af, type: 3}
+  spawnPrefabs:
+  - {fileID: 3988682555338751173, guid: 44232ad53e3ed1a4f9f3a3bf904761af, type: 3}
+  - {fileID: 1494430820161803138, guid: e6a18a5e94314bd429a38f481fdf63c5, type: 3}
   spawnPos:
   - {fileID: 1047193893}
   - {fileID: 1550627975}
