@@ -10,7 +10,7 @@ namespace KSY
         {
             if (collision.CompareTag("Enemy"))
             {
-                collision.gameObject.SetActive(false);
+                //collision.gameObject.SetActive(false);
                 GameManager.Instance.SpawnerMove(collision.gameObject);
             }
         }

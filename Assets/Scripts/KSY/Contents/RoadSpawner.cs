@@ -48,7 +48,7 @@ namespace KSY
                 enemy.MoveIdx = 0;
             }
        
-            obj.SetActive(true);
+           // obj.SetActive(true);
         }
     }
 }

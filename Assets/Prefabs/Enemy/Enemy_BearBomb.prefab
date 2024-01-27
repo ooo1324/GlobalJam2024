@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 22e26cee37e375245ace0fc57bef4127, type: 3}
-  m_Color: {r: 0.9528302, g: 0.5812863, b: 0.5812863, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fe1282b3b4f415c49b8e437aea14284e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,8 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a1ac358e1bf814da42bb8f296e4e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickHp: 0
+  moveIdx: 0
   enemyType: 2
-  wayPointPos: []
   spawnerIdx: 0
   minTime: 2
   maxTime: 5
@@ -166,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 3988682555338751173}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 68091724c9f045e4eae8391d84aafa11, type: 2}
+  m_Controller: {fileID: 9100000, guid: 966d6454f77d17d43b191d25c8b72306, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

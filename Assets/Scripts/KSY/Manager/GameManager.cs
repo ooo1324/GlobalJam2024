@@ -62,9 +62,9 @@ namespace KSY
             // 스테이지 정보 입력
             stageInfoList = new List<StageInfo>();
  
-            stageInfoList.Add(new StageInfo(5, 1f, new List<int> { 15, 20, 25 }));
-            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 20, 30, 40 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 25, 30, 35 }));
             stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 30, 40, 50 }));
+            stageInfoList.Add(new StageInfo(5, 0.5f, new List<int> { 40, 50, 60 }));
 
             #region spawner
             GameObject spawnerObj = GameObject.Find("@Spawner");

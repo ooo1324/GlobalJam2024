@@ -475,7 +475,7 @@ MonoBehaviour:
   - storySprite: {fileID: 0}
     storyText_kor: "\uD558\uC9C0\uB9CC \uC774\uBC88\uC5D0\uB294 \uAC19\uC774 \uAC00\uC904
       \uC218 \uC5C6\uC5B4"
-  - storySprite: {fileID: 21300000, guid: 3bad0b7144107484d9faa4c9ec261533, type: 3}
+  - storySprite: {fileID: 21300000, guid: cba1ae39fa5e99f4bafec9b8f2aae2c8, type: 3}
     storyText_kor: "\uC774 \uC7A5\uB09C\uAC10\uB4E4\uC774 \uB108\uB97C \uC9C0\uCF1C\uC904\uAC70\uC57C"
   text: {fileID: 1883446510}
   storyImg: {fileID: 633492548}
@@ -837,7 +837,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: cd625191dc1404242a1751a74af0d83c, type: 3}
     m_FontSize: 120
     m_FontStyle: 0
     m_BestFit: 0
@@ -999,7 +999,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4e9ed638888439b4f81c841b1694967e, type: 3}
+    m_Font: {fileID: 12800000, guid: cd625191dc1404242a1751a74af0d83c, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0

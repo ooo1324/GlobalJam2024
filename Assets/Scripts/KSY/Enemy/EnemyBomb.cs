@@ -18,8 +18,11 @@ namespace KSY
         [SerializeField]
         private float timeSec;
 
+        private Animator anim;
+
         public void StartBomb()
         {
+            anim = GetComponent<Animator>();
             timeSec = 0;
             bombTime = Random.Range(minTime, maxTime);
             StartCoroutine(CheckTime());
@@ -33,11 +36,14 @@ namespace KSY
                 yield return new WaitForFixedUpdate();
             }
 
+            anim.SetBool("isBomb", true); 
+        }
+
+        public void Bomb()
+        {
             // 터지는거 처리
             Debug.Log("Bomb!");
-
             // 애니메이션 수행 애니메이션 이벤트 받아서 터지도록 구현
-
             Managers.Events.MinusEnemyInvoke();
             GameManager.Instance.RemoveEnemyObj(gameObject);
         }
