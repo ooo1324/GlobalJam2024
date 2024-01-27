@@ -9,11 +9,25 @@ using UnityEngine;
 namespace LJH{
     public class CursorManager : MonoBehaviour
     {
+        #region Instance
+        private static CursorManager _instance;
+        public static CursorManager Instance{
+            get{
+                if(_instance == null)
+                    _instance = FindObjectOfType(typeof(CursorManager)) as CursorManager;
+
+                return _instance;
+            }
+        }
+        #endregion
 
         public List<Texture2D> cursorIcon = new();
         public List<GameObject> selectImg = new();
         public List<GameObject> lockImg = new();
-        [SerializeField] int nowWeponNum = 0;
+
+        public Texture2D nomalCursor;
+
+        public int nowWeponNum = 0;
         // Start is called before the first frame update
         void Start()
         {
@@ -61,6 +75,12 @@ namespace LJH{
                 lockImg[i].SetActive(false);
             }
         }       
+        private void OnMouseExit() {
+                print("exit");
+        }
+        void CursorLimit(){
+            
+        }
     }
 
 }
