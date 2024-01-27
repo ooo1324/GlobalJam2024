@@ -48,7 +48,7 @@ namespace LJH{
 
             if(Input.GetMouseButtonDown(0)){
                 GameObject attackMoation = Instantiate(attackMotionPrefab, 
-                    new Vector3(attackMotionPosition.position.x, attackMotionPosition.position.y,0f), 
+                    new Vector3(EffectManager.Instance.mousePos.x, EffectManager.Instance.mousePos.y - 2f, 0f), 
                     Quaternion.identity, attackMotionGroup);
                 switch(nowWeponNum){
                     case 0: //Sword
@@ -56,7 +56,7 @@ namespace LJH{
                     break;
                     
                     case 1: //wand
-                        
+                        attackMoation.GetComponent<Animator>().SetBool("Wand",true);
                     break;
 
                     case 2: //gun
