@@ -47,6 +47,8 @@ namespace KSY
 
         private float maxTime = 0;
 
+        public int dmg;
+
         public void Awake()
         {
             Instance = this;
@@ -80,14 +82,25 @@ namespace KSY
             spawner = spawnerObj.GetComponent<Spawner>();
 
             Managers.Events.AddEnemyEvent += Spawner_AddEnemyEvent;
-            Managers.Events.MinusEnemyEvent += Events_MinusEnemyEvent;
+            Managers.Events.MinusScore += Events_MinusScoreEvent;
+            Managers.Events.PlusScore += Events_PlusScore;
             #endregion
         }
 
-        private void Events_MinusEnemyEvent()
+        private void Events_PlusScore()
         {
             minusCount++;
+            CheckSpawnCount();
+        }
 
+        private void Events_MinusScoreEvent()
+        {
+            minusCount++;
+            CheckSpawnCount();
+        }
+
+        private void CheckSpawnCount()
+        {
             // 모든 객체 삭제
             if (maxSpawnCount <= minusCount)
             {

@@ -110,7 +110,7 @@ namespace KSY
         private void OnMouseDown()
         {
             //TODO : ������ �� ���⿡ ���� hp ���� �ǵ��� ����
-            Managers.Events.MinusEnemyInvoke();
+            Managers.Events.PlusScoreInvoke();
             GameManager.Instance.RemoveEnemyObj(gameObject);
         }
 
@@ -118,7 +118,7 @@ namespace KSY
         {
             if (collision.CompareTag("EndSensor"))
             {
-                Managers.Events.MinusEnemyInvoke();
+                Managers.Events.MinusScoreInvoke();
                 GameManager.Instance.RemoveEnemyObj(gameObject);
             }
         }

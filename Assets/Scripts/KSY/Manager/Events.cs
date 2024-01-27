@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class Events
 {
-    public event Action MinusEnemyEvent;
+    public event Action MinusScore;
+    public event Action PlusScore;
     public event Action AddEnemyEvent;
 
-    public void MinusEnemyInvoke()
+    public void MinusScoreInvoke()
     {
-        MinusEnemyEvent?.Invoke();
+        MinusScore?.Invoke();
+    }
+
+    public void PlusScoreInvoke()
+    {
+        PlusScore?.Invoke();
     }
 
     public void AddEnemyInvoke()
     {
         AddEnemyEvent?.Invoke();
     }
+
 }
