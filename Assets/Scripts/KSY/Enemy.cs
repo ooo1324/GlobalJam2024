@@ -27,6 +27,7 @@ namespace KSY
             }
         }
 
+        [SerializeField]
         private EEnemyType enemyType;
         
         public EEnemyType EnemyType
@@ -67,6 +68,7 @@ namespace KSY
         {
             //TestData
             moveSpeed = 14;
+            spriteRender = gameObject.GetComponent<SpriteRenderer>();
             Init();
         }
 
@@ -85,11 +87,14 @@ namespace KSY
             // Waypoint 끝에 도달했을 때 처리
             if (moveIdx == wayPointPos.Length)
                 return;
-
+            spriteRender.flipX = (transform.position.x - wayPointPos[moveIdx].x) < 0;
             transform.position = Vector2.MoveTowards(transform.position, wayPointPos[moveIdx], MoveSpeed * Time.deltaTime);
 
             if (transform.position == wayPointPos[moveIdx])
+            {
                 moveIdx++;
+            }
+                
         }
 
 

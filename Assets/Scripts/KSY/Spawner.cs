@@ -15,7 +15,7 @@ namespace KSY
         private int rotateAngle;
 
         [SerializeField]
-        private GameObject spawnPrefab;
+        private GameObject[] spawnPrefabs;
 
         [SerializeField]
         private GameObject[] spawnPos;
@@ -55,7 +55,8 @@ namespace KSY
             while (spawnCurrCnt < spawnMaxCnt)
             {
                 int randIdx = UnityEngine.Random.Range(0, spawnPos.Length);
-                Poolable obj = Managers.Pool.Pop(spawnPrefab, gameObject.transform);
+                int randSpawnIdx = UnityEngine.Random.Range(0, spawnPrefabs.Length);
+                Poolable obj = Managers.Pool.Pop(spawnPrefabs[randSpawnIdx], gameObject.transform);
                 Enemy enemy = obj.gameObject.GetComponent<Enemy>();
                 enemy.wayPointPos = wayPoint[randIdx].wayPointPos;
                 enemy.Init();

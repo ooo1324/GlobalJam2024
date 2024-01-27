@@ -14,7 +14,8 @@ public class TimeText : MonoBehaviour
         set
         {
             time = value;
-            timeUI.text = time.ToString("F0");
+            if(timeUI != null)
+                timeUI.text = time.ToString("F0");
         }
     }
 
