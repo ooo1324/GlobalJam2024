@@ -37,6 +37,18 @@ public class ClickManager : MonoBehaviour
                         Destroy(hit.collider.gameObject); //enemy를 파괴
                     }
                 }
+
+                if(hit.collider.tag == "EnemyBoss"){
+                    Enemy enemy = hit.transform.GetComponent<Enemy>();
+                    if(enemy.GetHP() > 1){
+                        enemy.minusHP(1);
+
+                        HPBarScript hPBar = hit.transform.GetComponent<HPBarScript>();
+                        if(enemy.GetHP() % 10 == 0){ //보스는 10단위로 hp Cell 제거
+                            Destroy(hPBar.hpPop());
+                        }
+                    }
+                }
             }
         }
     }

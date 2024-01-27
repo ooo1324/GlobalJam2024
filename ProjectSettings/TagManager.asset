@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - EndSensor
+  - EnemyBoss
   layers:
   - Default
   - TransparentFX
