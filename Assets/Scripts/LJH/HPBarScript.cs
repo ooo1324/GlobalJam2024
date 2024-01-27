@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LJH{
     public class HPBarScript : MonoBehaviour
     {
-        [SerializeField] List<GameObject> hpCell = new();
+        [SerializeField] public List<GameObject> hpCell = new();
         [SerializeField] GameObject hpParent;
 
         private void Start() {
