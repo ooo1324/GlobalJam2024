@@ -72,6 +72,7 @@ namespace LJH{
                     attackMoation.GetComponent<Animator>().SetBool("Wand",true);
                 }
             }
+            
         }
 
         void CursorChange()
@@ -97,6 +98,17 @@ namespace LJH{
                 else{
                     selectImg[i].SetActive(false);
                 }
+            }
+            switch(nowWeponNum){
+                case 0: //sword 1
+                    GameManager.Instance.dmg = 1;
+                break;
+                case 1: //wand 5
+                    GameManager.Instance.dmg = 5;
+                break;
+                case 2: //gun 3
+                    GameManager.Instance.dmg = 3;
+                break;
             }
         }
 
