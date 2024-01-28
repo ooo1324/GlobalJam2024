@@ -170,7 +170,7 @@ namespace KSY
 
             timeSec = 0;
             timeText.Time = timeSec;
-
+            Debug.Log("StartWave" + currWave);
             currWave++;
             spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
 
@@ -218,7 +218,7 @@ namespace KSY
                 timeText.Time = timeSec;
                 yield return new WaitForFixedUpdate();
             }
-
+            Debug.Log("TimeOut");
             StartWave();
         }
     }
