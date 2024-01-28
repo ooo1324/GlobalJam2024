@@ -18,6 +18,19 @@ public class ClickManager : MonoBehaviour
         // 마우스 왼쪽 버튼이 눌렸을 때
         if (Input.GetMouseButtonDown(0))
         {
+            switch(CursorManager.Instance.nowWeponNum){
+                    case 0:
+                        AudioManager.instance.Play("Sword");
+                    break;
+                        
+                    case 1:
+                        AudioManager.instance.Play("Wand");
+                    break;
+
+                    case 2:
+                        AudioManager.instance.Play("Gun");
+                    break;
+                }
             // 마우스 위치를 Ray로 변환
             // Vector2 rayPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(EffectManager.Instance.mousePos, Vector2.zero);
@@ -25,6 +38,7 @@ public class ClickManager : MonoBehaviour
             // Ray가 어떤 Collider와 충돌했는지 확인
             if (hit.collider != null)
             {
+                
                 //충돌했다면
                 if(hit.collider.tag == "Enemy" && (CursorManager.Instance.nowWeponNum == 0 || CursorManager.Instance.nowWeponNum == 2)){ //적이라면
                     Enemy enemy = hit.transform.GetComponent<Enemy>();
