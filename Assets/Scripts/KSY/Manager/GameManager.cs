@@ -78,14 +78,14 @@ namespace KSY
             weaponDamages.Add(EWeaponType.Weapon2, 2);
             weaponDamages.Add(EWeaponType.Weapon3, 3);
 
-            // ½ºÅ×ÀÌÁö Á¤º¸ ÀÔ·Â
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
             stageInfoList = new List<StageInfo>();
  
             stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
-            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
-            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
-            //stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 20, 30, 40 }));
-            //stageInfoList.Add(new StageInfo(5, 0.5f, new List<int> { 30, 40, 50 }));
+            // stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            // stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 20, 30, 40 }));
+            stageInfoList.Add(new StageInfo(5, 0.5f, new List<int> { 30, 40, 50 }));
 
             #region spawner
             GameObject spawnerObj = GameObject.Find("@Spawner");
@@ -129,12 +129,12 @@ namespace KSY
         private void CheckSpawnCount()
         {
             Debug.Log($"{maxSpawnCount} : {minusCount}");
-            // ¸ðµç °´Ã¼ »èÁ¦
+            // ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
             if (maxSpawnCount <= minusCount)
             {
                 Debug.Log("Next Stage");
 
-                // Stage ³Ñ±â±â
+                // Stage ï¿½Ñ±ï¿½ï¿½
                 StartStage();
             }
         }
@@ -181,7 +181,7 @@ namespace KSY
             else if (currStage == 2)
                 scoreManager.Health = 150;
 
-            // Boss Count Ãß°¡
+            // Boss Count ï¿½ß°ï¿½
             maxSpawnCount++;
             currWave = -1;
             StartWave();

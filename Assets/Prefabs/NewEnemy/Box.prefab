@@ -201,7 +201,7 @@ MonoBehaviour:
   moveIdx: 0
   enemyType: 0
   spawnerIdx: 0
-  moveSpeed: 15
+  moveSpeed: 10
 --- !u!114 &5366417560996991172
 MonoBehaviour:
   m_ObjectHideFlags: 0

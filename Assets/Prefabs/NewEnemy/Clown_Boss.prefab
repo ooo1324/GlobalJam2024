@@ -377,7 +377,7 @@ MonoBehaviour:
   moveIdx: 0
   enemyType: 3
   spawnerIdx: 0
-  moveSpeed: 10
+  moveSpeed: 8
 --- !u!114 &3272818466136529402
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,9 +64,6 @@ public class StoryScripts : MonoBehaviour
         }
         else
         {
-
-            AudioManager.instance.Play("Gameplay");
-            AudioManager.instance.Stop("Intro");
             SceneManager.LoadScene("GameScene");
         }
     }

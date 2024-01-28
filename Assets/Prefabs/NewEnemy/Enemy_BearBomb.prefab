@@ -522,7 +522,7 @@ MonoBehaviour:
   moveIdx: 0
   enemyType: 2
   spawnerIdx: 0
-  moveSpeed: 13
+  moveSpeed: 9
   minTime: 2
   maxTime: 5
   bombTime: 0
