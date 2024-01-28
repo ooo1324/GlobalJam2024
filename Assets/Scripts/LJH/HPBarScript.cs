@@ -22,7 +22,18 @@ namespace LJH{
             
         }
 
+        public void InitBar()
+        {
+            if (hpCell.Count <= 0) return;
+
+            for (int i = 0; i < hpCell.Count; i++)
+            {
+                hpCell[i].SetActive(true);
+            }
+        }
+
         public GameObject hpPop(){
+            if (hpCell.Count <= 0) return null;
             GameObject cell = hpCell[0];
             hpCell.RemoveAt(0);
             return cell;

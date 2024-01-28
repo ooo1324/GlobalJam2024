@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KSY
 {
@@ -50,6 +51,9 @@ namespace KSY
 
         private ScoreManager scoreManager;
 
+        [SerializeField]
+        private Text stageText;
+
         private float maxTime = 0;
 
         public int dmg;
@@ -69,9 +73,11 @@ namespace KSY
             // 스테이지 정보 입력
             stageInfoList = new List<StageInfo>();
  
-            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 25, 30, 35 }));
-            stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 30, 40, 50 }));
-            stageInfoList.Add(new StageInfo(5, 0.5f, new List<int> { 40, 50, 60 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            //stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 20, 30, 40 }));
+            //stageInfoList.Add(new StageInfo(5, 0.5f, new List<int> { 30, 40, 50 }));
 
             #region spawner
             GameObject spawnerObj = GameObject.Find("@Spawner");
@@ -107,6 +113,7 @@ namespace KSY
 
         private void CheckSpawnCount()
         {
+            Debug.Log($"{maxSpawnCount} : {minusCount}");
             // 모든 객체 삭제
             if (maxSpawnCount <= minusCount)
             {
@@ -141,7 +148,7 @@ namespace KSY
             currStage++;
             spawner.spawnRate = stageInfoList[currStage].SpawnRate;
             maxTime = stageInfoList[currStage].WaveTime;
-
+            maxSpawnCount = 0;
             List<int> spawnList = stageInfoList[currStage].SpawnMaxCount;
             for (int i = 0; i < spawnList.Count; i++)
             {
@@ -170,8 +177,8 @@ namespace KSY
 
             timeSec = 0;
             timeText.Time = timeSec;
-            Debug.Log("StartWave" + currWave);
             currWave++;
+            Debug.Log("StartWave" + currWave);
             spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
 
             if (currWave == 2)

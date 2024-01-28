@@ -32,14 +32,15 @@ public class ClickManager : MonoBehaviour
                         enemy.minusHP(GameManager.Instance.dmg); //hp 감소
 
                         HPBarScript hpbar = hit.transform.GetComponent<HPBarScript>();
-                        for(int i = 0;i < GameManager.Instance.dmg;i++){
-
-                            Destroy(hpbar.hpPop()); //객체 파괴
+                        for(int i = 0;i < GameManager.Instance.dmg;i++)
+                        {
+                            GameObject obj = hpbar.hpPop();
+                            if(obj != null)
+                                obj.SetActive(false); //객체 파괴
                         }
                     } else{ //hp가 부족하다면 
                         Managers.Events.PlusScoreInvoke();
                         GameManager.Instance.RemoveEnemyObj(hit.collider.gameObject);
-                        Destroy(hit.collider.gameObject); //enemy를 파괴
                     }
                 }
 
@@ -50,7 +51,7 @@ public class ClickManager : MonoBehaviour
 
                         HPBarScript hPBar = hit.transform.GetComponent<HPBarScript>();
                         if(enemy.GetHP() % 10 == 0){ //보스는 10단위로 hp Cell 제거
-                            Destroy(hPBar.hpPop());
+                            hPBar.hpPop().SetActive(false);
                         }
                     }
                 }

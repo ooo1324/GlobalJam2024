@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LJH;
 
 namespace KSY
 {
@@ -83,6 +84,9 @@ namespace KSY
                     EnemyBomb enemyBomb = obj.gameObject.GetComponent<EnemyBomb>();
                     enemyBomb.StartBomb();
                 }
+
+                HPBarScript hpbar = obj.GetComponent<HPBarScript>();
+                hpbar.InitBar();
 
                 enemy.Init();
                 Managers.Events.AddEnemyInvoke();

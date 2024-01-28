@@ -72,6 +72,9 @@ namespace KSY
             }
         }
 
+        private int currHp;
+
+
         public void Start()
         {
             spriteRender = gameObject.GetComponent<SpriteRenderer>();
@@ -82,6 +85,7 @@ namespace KSY
         {
             spawnerIdx = -1;
             moveIdx = 0;
+            currHp = clickHp;
         }
         void Update()
         {
@@ -115,10 +119,10 @@ namespace KSY
         protected virtual void ChildUpdate() { }
 
         public void minusHP(int _dmg){
-            clickHp -= _dmg;
+            currHp -= _dmg;
         }
         public int GetHP(){
-            return clickHp;
+            return currHp;
         }
     } 
 }
