@@ -14,6 +14,8 @@ public class ButtonScript : MonoBehaviour
     }
 
     public void GoToTitle(){
+        AudioManager.instance.Play("Intro");
+        AudioManager.instance.Stop("Gameplay");
         SceneManager.LoadScene("TitleScene");
     }
 }

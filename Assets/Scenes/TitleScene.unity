@@ -896,12 +896,12 @@ MonoBehaviour:
     source: {fileID: 0}
     name: Ending
     volume: 10
-    loop: 1
+    loop: 0
   - clip: {fileID: 8300000, guid: 9d0fbafe905f144109bbfa7a9774b5b8, type: 3}
     source: {fileID: 0}
     name: Gameover
     volume: 10
-    loop: 1
+    loop: 0
   - clip: {fileID: 8300000, guid: 1e0806bbb64764223a46bab98d514354, type: 3}
     source: {fileID: 0}
     name: Gun
@@ -921,7 +921,7 @@ MonoBehaviour:
     source: {fileID: 0}
     name: Gameplay
     volume: 10
-    loop: 1
+    loop: 0
   - clip: {fileID: 8300000, guid: 12ef3ccd02bd5469cb6ab641d14a9ee6, type: 3}
     source: {fileID: 0}
     name: Sword
@@ -953,7 +953,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dc8195f4f3ad147bc8ce9c25a8728ba6, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
