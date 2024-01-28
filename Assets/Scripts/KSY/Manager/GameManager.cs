@@ -58,6 +58,14 @@ namespace KSY
 
         public int dmg;
 
+        [SerializeField]
+        private GameObject ClearUIObj;
+
+        [SerializeField]
+        private GameObject GameOverUIObj;
+
+        public bool isGameOver = false;
+
         public void Awake()
         {
             Instance = this;
@@ -107,6 +115,13 @@ namespace KSY
         private void Events_MinusScoreEvent(float score)
         {
             scoreManager.Health -= score;
+            if (scoreManager.Health <= 0)
+            {
+                // GameOver
+                GameOverUIObj.SetActive(true);
+                isGameOver = true;
+            }
+
             minusCount++;
             CheckSpawnCount();
         }
@@ -137,9 +152,13 @@ namespace KSY
 
         public void StartStage()
         {
+            if (isGameOver)
+                return;
+
             if (currStage >= 2)
             {
-                // TODO : Game Ending
+                // GameClear
+                ClearUIObj.SetActive(true);
                 return;
             }
             spawnCount = 0;
@@ -170,6 +189,9 @@ namespace KSY
 
         public void StartWave()
         {
+            if (isGameOver)
+                return;
+
             if (currWave >= 2)
             {
                 return;
@@ -179,6 +201,7 @@ namespace KSY
             timeText.Time = timeSec;
             currWave++;
             Debug.Log("StartWave" + currWave);
+            stageText.text = $"{currStage + 1} - {currWave + 1}";
             spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
 
             if (currWave == 2)
@@ -204,6 +227,8 @@ namespace KSY
 
         public void SpawnerMove(GameObject obj)
         {
+            if (isGameOver)
+                return;
             roadSpawner.RoadSpawn(obj);
         }
 
@@ -224,6 +249,8 @@ namespace KSY
                 timeSec += Time.deltaTime;
                 timeText.Time = timeSec;
                 yield return new WaitForFixedUpdate();
+                if (isGameOver)
+                    break;
             }
             Debug.Log("TimeOut");
             StartWave();
