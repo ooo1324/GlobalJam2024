@@ -12,4 +12,8 @@ public class ButtonScript : MonoBehaviour
     public void QuitBtn(){
         Application.Quit();
     }
+
+    public void GoToTitle(){
+        SceneManager.LoadScene("TitleScene");
+    }
 }
