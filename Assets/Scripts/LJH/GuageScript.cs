@@ -8,8 +8,19 @@ using UnityEngine.UI;
 namespace LJH{
     public class GuageScript : MonoBehaviour
     {
+        private static GuageScript _instance;
+
+        public static GuageScript Instance{
+            get {
+                if(_instance == null)
+                    _instance = GameObject.FindObjectOfType(typeof(GuageScript)) as GuageScript;
+                
+                return _instance;
+            }
+        }
         [SerializeField] Slider wandGuageSlider;
         [SerializeField] GameObject wandCollider;
+        public bool effectFlag;
 
         // Update is called once per frame
         void Update()
@@ -25,8 +36,11 @@ namespace LJH{
                     //클릭을 떼면 게이지가 0으로 
                     if(wandGuageSlider.value == wandGuageSlider.maxValue){
                         //콜라이더 추가.
+                        effectFlag = true;
                         wandCollider.SetActive(true);
                         wandCollider.SetActive(false);
+                        wandGuageSlider.value = wandGuageSlider.minValue;
+                    }else{
                         wandGuageSlider.value = wandGuageSlider.minValue;
                     }
                 }
