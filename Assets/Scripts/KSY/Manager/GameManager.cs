@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KSY
 {
@@ -50,9 +51,20 @@ namespace KSY
 
         private ScoreManager scoreManager;
 
+        [SerializeField]
+        private Text stageText;
+
         private float maxTime = 0;
 
         public int dmg;
+
+        [SerializeField]
+        private GameObject ClearUIObj;
+
+        [SerializeField]
+        private GameObject GameOverUIObj;
+
+        public bool isGameOver = false;
 
         public void Awake()
         {
@@ -69,9 +81,11 @@ namespace KSY
             // 스테이지 정보 입력
             stageInfoList = new List<StageInfo>();
  
-            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 25, 30, 35 }));
-            stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 30, 40, 50 }));
-            stageInfoList.Add(new StageInfo(5, 0.5f, new List<int> { 40, 50, 60 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            stageInfoList.Add(new StageInfo(5, 0.8f, new List<int> { 10, 10, 10 }));
+            //stageInfoList.Add(new StageInfo(5, 0.6f, new List<int> { 20, 30, 40 }));
+            //stageInfoList.Add(new StageInfo(5, 0.5f, new List<int> { 30, 40, 50 }));
 
             #region spawner
             GameObject spawnerObj = GameObject.Find("@Spawner");
@@ -101,12 +115,20 @@ namespace KSY
         private void Events_MinusScoreEvent(float score)
         {
             scoreManager.Health -= score;
+            if (scoreManager.Health <= 0)
+            {
+                // GameOver
+                GameOverUIObj.SetActive(true);
+                isGameOver = true;
+            }
+
             minusCount++;
             CheckSpawnCount();
         }
 
         private void CheckSpawnCount()
         {
+            Debug.Log($"{maxSpawnCount} : {minusCount}");
             // 모든 객체 삭제
             if (maxSpawnCount <= minusCount)
             {
@@ -130,9 +152,13 @@ namespace KSY
 
         public void StartStage()
         {
+            if (isGameOver)
+                return;
+
             if (currStage >= 2)
             {
-                // TODO : Game Ending
+                // GameClear
+                ClearUIObj.SetActive(true);
                 return;
             }
             spawnCount = 0;
@@ -141,7 +167,7 @@ namespace KSY
             currStage++;
             spawner.spawnRate = stageInfoList[currStage].SpawnRate;
             maxTime = stageInfoList[currStage].WaveTime;
-
+            maxSpawnCount = 0;
             List<int> spawnList = stageInfoList[currStage].SpawnMaxCount;
             for (int i = 0; i < spawnList.Count; i++)
             {
@@ -163,6 +189,9 @@ namespace KSY
 
         public void StartWave()
         {
+            if (isGameOver)
+                return;
+
             if (currWave >= 2)
             {
                 return;
@@ -170,8 +199,9 @@ namespace KSY
 
             timeSec = 0;
             timeText.Time = timeSec;
-            Debug.Log("StartWave" + currWave);
             currWave++;
+            Debug.Log("StartWave" + currWave);
+            stageText.text = $"{currStage + 1} - {currWave + 1}";
             spawner.StartSpawn(stageInfoList[currStage].SpawnMaxCount[currWave]);
 
             if (currWave == 2)
@@ -197,6 +227,8 @@ namespace KSY
 
         public void SpawnerMove(GameObject obj)
         {
+            if (isGameOver)
+                return;
             roadSpawner.RoadSpawn(obj);
         }
 
@@ -217,6 +249,8 @@ namespace KSY
                 timeSec += Time.deltaTime;
                 timeText.Time = timeSec;
                 yield return new WaitForFixedUpdate();
+                if (isGameOver)
+                    break;
             }
             Debug.Log("TimeOut");
             StartWave();

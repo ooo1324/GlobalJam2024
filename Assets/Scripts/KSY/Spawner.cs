@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LJH;
 
 namespace KSY
 {
@@ -58,6 +59,9 @@ namespace KSY
 
         public void BossSpawn(int bossIdx)
         {
+            if (GameManager.Instance.isGameOver)
+                return;
+
             Poolable obj = Managers.Pool.Pop(spawnBossPrefabs[bossIdx], gameObject.transform);
             Managers.Events.AddEnemyInvoke();
             Enemy enemy = obj.gameObject.GetComponent<Enemy>();
@@ -70,6 +74,9 @@ namespace KSY
         {
             while (spawnCurrCnt < spawnMaxCnt)
             {
+                if (GameManager.Instance.isGameOver)
+                    break;
+
                 int randIdx = UnityEngine.Random.Range(0, spawnPos.Length);
                 int randSpawnIdx = UnityEngine.Random.Range(0, spawnPrefabs.Length);
                 Poolable obj = Managers.Pool.Pop(spawnPrefabs[randSpawnIdx], gameObject.transform);
@@ -84,6 +91,9 @@ namespace KSY
                     enemyBomb.StartBomb();
                 }
 
+                HPBarScript hpbar = obj.GetComponent<HPBarScript>();
+                hpbar.InitBar();
+
                 enemy.Init();
                 Managers.Events.AddEnemyInvoke();
                 spawnCurrCnt++;
@@ -91,6 +101,8 @@ namespace KSY
                 yield return new WaitForSeconds(spawnRate);
             }
 
+            if (GameManager.Instance.isGameOver)
+                yield return null;
             GameManager.Instance.WaveTimeStart();
         }
     }

@@ -8,7 +8,7 @@ namespace KSY
     {
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.CompareTag("Enemy"))
+            if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyBoss"))
             {
                 //collision.gameObject.SetActive(false);
                 GameManager.Instance.SpawnerMove(collision.gameObject);
