@@ -68,6 +68,7 @@ namespace KSY
 
         public void Awake()
         {
+            Screen.SetResolution(1920, 1080, true);
             Instance = this;
             scoreManager = GetComponent<ScoreManager>();
             weaponLevel = 3;
@@ -115,12 +116,15 @@ namespace KSY
         private void Events_MinusScoreEvent(float score)
         {
             scoreManager.Health -= score;
-            if (scoreManager.Health <= 0)
-            {
-                // GameOver
-                GameOverUIObj.SetActive(true);
-                isGameOver = true;
-            }
+
+
+            // TODO : GameOver 테스트를 위해 잠시 꺼놓음
+            //if (scoreManager.Health <= 0)
+            //{
+            //    // GameOver
+            //    GameOverUIObj.SetActive(true);
+            //    isGameOver = true;
+            //}
 
             minusCount++;
             CheckSpawnCount();

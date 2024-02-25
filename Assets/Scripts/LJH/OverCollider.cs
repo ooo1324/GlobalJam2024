@@ -18,11 +18,13 @@ public class OverCollider : MonoBehaviour
     }
     private void OnMouseEnter() {
         print("enter"+this.gameObject.name);
-        Cursor.SetCursor(CursorManager.Instance.cursorIcon[CursorManager.Instance.nowWeponNum],
-        Vector2.zero, CursorMode.Auto);
+
+        //Cursor.SetCursor(CursorManager.Instance.cursorIcon[CursorManager.Instance.nowWeponNum],
+        //Vector2.zero, CursorMode.Auto);
     }
     private void OnMouseExit() {
         print("Exit" + this.gameObject.name);
-        Cursor.SetCursor(CursorManager.Instance.nomalCursor, Vector2.zero, CursorMode.Auto);
+
+        //Cursor.SetCursor(CursorManager.Instance.nomalCursor, Vector2.zero, CursorMode.Auto);
     }
 }
