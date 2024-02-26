@@ -10,8 +10,6 @@ public class ClickManager : MonoBehaviour
     private float distanceToCamera;
     private CinemachineBrain cameraBrain;
 
-    [SerializeField]
-    private Camera UICamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +34,7 @@ public class ClickManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 rayPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distanceToCamera));
-
-        rayPos = rayPos - new Vector3(3.3f, -1.3f, 0);
-        Debug.DrawRay(rayPos, transform.forward * 15f, Color.red, 0.3f);
+      
         // 마우스 왼쪽 버튼이 눌렸을 때
         if (Input.GetMouseButtonDown(0))
         {
@@ -59,16 +54,10 @@ public class ClickManager : MonoBehaviour
             //        break;
             //    }
 
+            Vector3 rayPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distanceToCamera));
 
-            // 마우스 위치를 Ray로 변환
-            //Vector3 rayPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //rayPos.z = -10;
-
-
-           // Vector3 rayPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distanceToCamera));
-          
-            //Old
-            //RaycastHit2D hit = Physics2D.Raycast(EffectManager.Instance.mousePos, Vector2.zero);
+            rayPos = rayPos - new Vector3(3.3f, -1.3f, 0);
+            Debug.DrawRay(rayPos, transform.forward * 15f, Color.red, 0.3f);
 
             RaycastHit2D hit = Physics2D.Raycast(rayPos, transform.forward, 15f);
           
