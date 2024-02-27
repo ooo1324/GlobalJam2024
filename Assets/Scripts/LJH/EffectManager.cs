@@ -21,7 +21,6 @@ namespace LJH{
         #endregion
         
         public Vector3 mousePos;
-        public GameObject nowCam;
 
         [SerializeField]
         public Vector3 mouseOffSet = Vector3.zero;

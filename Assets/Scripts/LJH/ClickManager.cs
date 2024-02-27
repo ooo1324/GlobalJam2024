@@ -5,28 +5,14 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour
 {
-    private float distanceToCamera;
-    private CinemachineBrain cameraBrain;
+
+    [SerializeField]
+    private Camera UICam;
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraBrain = Camera.main.GetComponent<CinemachineBrain>();
-
-        cameraBrain.m_CameraCutEvent.AddListener((brain) =>
-        {
-            if (brain != null)
-            {
-                if (brain.ActiveVirtualCamera != null)
-                {
-                    // if virtual camera changed
-                    distanceToCamera = Vector3.Distance(EffectManager.Instance.nowCam.transform.position, brain.ActiveVirtualCamera.VirtualCameraGameObject.transform.position);
-                    Debug.Log("brain : " + brain.ActiveVirtualCamera.VirtualCameraGameObject.transform.position);
-                }
-            }
-        });
-
-        distanceToCamera = Vector3.Distance(EffectManager.Instance.nowCam.transform.position, Camera.main.transform.position);
+        
     }
 
     // Update is called once per frame
@@ -52,15 +38,16 @@ public class ClickManager : MonoBehaviour
             //        break;
             //    }
 
-            Vector3 rayPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distanceToCamera))
-                - new Vector3(EffectManager.Instance.mouseOffSet.x, EffectManager.Instance.mouseOffSet.y, 0);
-            
-            Debug.DrawRay(rayPos, transform.forward * 15f, Color.red, 0.3f);
 
-            RaycastHit2D hit = Physics2D.Raycast(rayPos, transform.forward, 15f);
+            RaycastHit2D hit;
+            Vector2 screenPos = UICam.ScreenToWorldPoint(Input.mousePosition);
 
-            Debug.Log($"x: {rayPos.x}, y: {rayPos.y}");
+            // 마우스 포지션 보정
+            Vector3 mousePoint = new Vector3((screenPos.x * (1 / 14f)) + 2.25f, (screenPos.y * (1 / 14f)) + 0.323f, -4);
+            var ray = Camera.main.ViewportPointToRay(mousePoint);
+            hit = Physics2D.GetRayIntersection(ray);
 
+            CursorManager.Instance.ClickEffect(ray.origin);
 
             // Ray가 어떤 Collider와 충돌했는지 확인
             if (hit.collider != null)

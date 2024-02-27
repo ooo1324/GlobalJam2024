@@ -32,7 +32,7 @@ namespace LJH
 
         [SerializeField] GameObject attackMotionPrefab;
         [SerializeField] Transform attackMotionGroup;
-        [SerializeField] Transform attackMotionPosition;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -45,27 +45,6 @@ namespace LJH
         {
             CursorChange();
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                GameObject attackMoation = Instantiate(attackMotionPrefab,
-                    new Vector3(EffectManager.Instance.mousePos.x, EffectManager.Instance.mousePos.y, 0f),
-                    Quaternion.identity, attackMotionGroup);
-
-                switch (nowWeponNum)
-                {
-                    case 0: //Sword
-                        attackMoation.GetComponent<Animator>().SetBool("Sword", true);
-                        break;
-
-                    case 1: //wand
-                        attackMoation.GetComponent<Animator>().SetBool("Wand", true);
-                        break;
-
-                    case 2: //gun
-                        attackMoation.GetComponent<Animator>().SetBool("Gun", true);
-                        break;
-                }
-            }
             // if(Input.GetMouseButtonUp(0)){
             //     if(nowWeponNum == 1){
             //         if(GuageScript.Instance.effectFlag){
@@ -79,6 +58,29 @@ namespace LJH
             //     }
             // }
 
+        }
+
+        public void ClickEffect(Vector2 effectPos)
+        {
+            GameObject attackMoation = Instantiate(attackMotionPrefab, attackMotionGroup);
+            attackMoation.transform.position = effectPos;
+            //GameObject attackMoation = Instantiate(attackMotionPrefab,
+            //       new Vector3(effectPos.x, effectPos.y, 0f), Quaternion.identity, attackMotionGroup);
+
+            switch (nowWeponNum)
+            {
+                case 0: //Sword
+                    attackMoation.GetComponent<Animator>().SetBool("Sword", true);
+                    break;
+
+                case 1: //wand
+                    attackMoation.GetComponent<Animator>().SetBool("Wand", true);
+                    break;
+
+                case 2: //gun
+                    attackMoation.GetComponent<Animator>().SetBool("Gun", true);
+                    break;
+            }
         }
 
         void CursorChange()

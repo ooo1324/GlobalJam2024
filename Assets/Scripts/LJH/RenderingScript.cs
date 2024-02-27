@@ -49,7 +49,6 @@ namespace LJH{
 
             virtuarCameras[idx].SetActive(true);
             lightImg[idx].color = Color.green;
-            EffectManager.Instance.nowCam = virtuarCameras[idx];
         }
     }
 }
