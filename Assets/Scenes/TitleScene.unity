@@ -1373,7 +1373,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: cd625191dc1404242a1751a74af0d83c, type: 3}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3954,10 +3954,9 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\uAE40\uB3D9\uBBFC / \uAE30\uD68D / No gain, No pain\n\n\uD64D\uC131\uC778
-    / \uAE30\uD68D /  \uC990\uAC70\uC6E0\uC2B5\uB2C8\uB2E4\n\n\uBC15\uC131\uBE48
-    / \uC544\uD2B8 / \uC990\uAC70\uC6E0\uC2B5\uB2C8\uB2E4\n\n\uC774\uC900\uD638 /
-    \uD504\uB85C\uADF8\uB798\uBC0D / \uC990\uAC70\uC6E0\uC2B5\uB2C8\uB2E4\n\n\uAE40\uC18C\uC5F0
-    / \uD504\uB85C\uADF8\uB798\uBC0D / \uC990\uAC70\uC6E0\uC2B5\uB2C8\uB2E4\n"
+    / \uAE30\uD68D / Carpe diem\n\n\uBC15\uC131\uBE48 / \uC544\uD2B8 / \uC990\uAC70\uC6E0\uC2B5\uB2C8\uB2E4\n\n\uC774\uC900\uD638
+    / \uAC1C\uBC1C / \uB450\uBC88\uC9F8 \uC791\uD488\n\n\uAE40\uC18C\uC5F0 / \uAC1C\uBC1C
+    / \uC798\uB180\uB2E4 \uAC11\uB2C8\uB2E4\n"
 --- !u!222 &1774440178
 CanvasRenderer:
   m_ObjectHideFlags: 0
