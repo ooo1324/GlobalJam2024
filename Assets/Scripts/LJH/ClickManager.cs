@@ -12,10 +12,14 @@ public class ClickManager : MonoBehaviour
     [SerializeField]
     private Transform screenDownPos;
 
+    private float xCorrection;
+
+    private float yCorrection;
     // Start is called before the first frame update
     void Start()
     {
-        
+        xCorrection = screenDownPos.position.x * (1 / 14f);
+        yCorrection = screenDownPos.position.y * (1 / 14f);
     }
 
     // Update is called once per frame
@@ -46,7 +50,7 @@ public class ClickManager : MonoBehaviour
             Vector2 screenPos = UICam.ScreenToWorldPoint(Input.mousePosition);
 
             // 마우스 포지션 보정
-            Vector3 mousePoint = new Vector3((screenPos.x * (1 / 14f)) - (screenDownPos.position.x * (1 / 14f)), (screenPos.y * (1 / 14f)) - (screenDownPos.position.y * (1 / 14f)), -4);
+            Vector3 mousePoint = new Vector3((screenPos.x * (1 / 14f)) - xCorrection, (screenPos.y * (1 / 14f)) - yCorrection, -4);
 
             var ray = Camera.main.ViewportPointToRay(mousePoint);
             hit = Physics2D.GetRayIntersection(ray);
