@@ -10,6 +10,9 @@ namespace LJH{
         [SerializeField] public List<GameObject> virtuarCameras = new();
 
         [SerializeField] List<Image> lightImg = new();
+
+        [SerializeField]
+        private Color inactiveColor;
         // [SerializeField] List<BoxCollider2D> screenColliders = new();
 
         // Update is called once per frame
@@ -41,7 +44,7 @@ namespace LJH{
             for (int i = 0; i < lightImg.Count; i++)
             {
                 if (lightImg[i].color == Color.green)
-                    lightImg[i].color = Color.red;
+                    lightImg[i].color = inactiveColor;
             }
 
             virtuarCameras[idx].SetActive(true);

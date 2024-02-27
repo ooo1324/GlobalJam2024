@@ -24,13 +24,13 @@ namespace LJH{
         public GameObject nowCam;
 
         [SerializeField]
-        Vector3 mouseOffSet = Vector3.zero;
+        public Vector3 mouseOffSet = Vector3.zero;
+
         // Update is called once per frame
         void Update()
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(mouseOffSet.x, mouseOffSet.y, 0); //뒤의 vector는 영점조절
-            //TODO : Test용
-            //mousePos = nowCam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(12f, 3f, Input.mousePosition.z); //뒤의 vector는 영점조절
+           
             this.transform.position = mousePos;
         }
     }

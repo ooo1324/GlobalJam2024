@@ -1,26 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using KSY;
-using Unity.Collections;
-using Unity.Mathematics;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace LJH{
+namespace LJH
+{
     public class CursorManager : MonoBehaviour
     {
         #region Instance
         private static CursorManager _instance;
-        public static CursorManager Instance{
-            get{
-                if(_instance == null)
+        public static CursorManager Instance
+        {
+            get
+            {
+                if (_instance == null)
                     _instance = FindObjectOfType(typeof(CursorManager)) as CursorManager;
 
                 return _instance;
             }
         }
-        #endregion
+        #endregion;
 
         public List<Texture2D> cursorIcon = new();
         public List<GameObject> selectImg = new();
@@ -28,7 +26,9 @@ namespace LJH{
 
         public Texture2D nomalCursor;
 
-        public int nowWeponNum = 0;
+
+        public int nowWeponNum { get; private set; }
+
 
         [SerializeField] GameObject attackMotionPrefab;
         [SerializeField] Transform attackMotionGroup;
@@ -36,7 +36,7 @@ namespace LJH{
         // Start is called before the first frame update
         void Start()
         {
-            Cursor.SetCursor(cursorIcon[0],Vector2.zero, CursorMode.Auto);//게임 시작했을 땐, 커서를 0으로
+            Cursor.SetCursor(cursorIcon[0], Vector2.zero, CursorMode.Auto);//게임 시작했을 땐, 커서를 0으로
             LevelSet();
         }
 
@@ -45,22 +45,25 @@ namespace LJH{
         {
             CursorChange();
 
-            if(Input.GetMouseButtonDown(0)){
-                GameObject attackMoation = Instantiate(attackMotionPrefab, 
-                    new Vector3(EffectManager.Instance.mousePos.x, EffectManager.Instance.mousePos.y - 2f, 0f), 
+            if (Input.GetMouseButtonDown(0))
+            {
+                GameObject attackMoation = Instantiate(attackMotionPrefab,
+                    new Vector3(EffectManager.Instance.mousePos.x, EffectManager.Instance.mousePos.y, 0f),
                     Quaternion.identity, attackMotionGroup);
-                switch(nowWeponNum){
+
+                switch (nowWeponNum)
+                {
                     case 0: //Sword
-                        attackMoation.GetComponent<Animator>().SetBool("Sword",true);
-                    break;
-                    
+                        attackMoation.GetComponent<Animator>().SetBool("Sword", true);
+                        break;
+
                     case 1: //wand
-                        attackMoation.GetComponent<Animator>().SetBool("Wand",true);
-                    break;
+                        attackMoation.GetComponent<Animator>().SetBool("Wand", true);
+                        break;
 
                     case 2: //gun
-                        attackMoation.GetComponent<Animator>().SetBool("Gun",true);
-                    break;
+                        attackMoation.GetComponent<Animator>().SetBool("Gun", true);
+                        break;
                 }
             }
             // if(Input.GetMouseButtonUp(0)){
@@ -69,63 +72,74 @@ namespace LJH{
             //             GameObject attackMoation = Instantiate(attackMotionPrefab, 
             //             new Vector3(EffectManager.Instance.mousePos.x, EffectManager.Instance.mousePos.y - 2f, 0f), 
             //             Quaternion.identity, attackMotionGroup);
-                        
+
             //             GuageScript.Instance.effectFlag = false;
             //         }
-                    
+
             //     }
             // }
-            
+
         }
 
         void CursorChange()
         {
-            if(Input.GetKeyDown(KeyCode.Q)){
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
                 nowWeponNum -= 1;
-                if(nowWeponNum < 0) {
-                     nowWeponNum = GameManager.Instance.weaponLevel - 1;
+                if (nowWeponNum < 0)
+                {
+                    nowWeponNum = GameManager.Instance.weaponLevel - 1;
                 }
-                Cursor.SetCursor(cursorIcon[nowWeponNum],Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(cursorIcon[nowWeponNum], Vector2.zero, CursorMode.Auto);
             }
-            if(Input.GetKeyDown(KeyCode.E)){
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
                 nowWeponNum += 1;
-                if(nowWeponNum > GameManager.Instance.weaponLevel - 1){
+                if (nowWeponNum > GameManager.Instance.weaponLevel - 1)
+                {
                     nowWeponNum = 0;
                 }
-                Cursor.SetCursor(cursorIcon[nowWeponNum],Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(cursorIcon[nowWeponNum], Vector2.zero, CursorMode.Auto);
             }
-            for(int i = 0; i< cursorIcon.Count ;i++){
-                if(i == nowWeponNum){
+
+            for (int i = 0; i < cursorIcon.Count; i++)
+            {
+                if (i == nowWeponNum)
+                {
                     selectImg[i].SetActive(true);
                 }
-                else{
+                else
+                {
                     selectImg[i].SetActive(false);
                 }
             }
-            switch(nowWeponNum){
+
+            switch (nowWeponNum)
+            {
                 case 0: //sword 1
                     GameManager.Instance.dmg = 1;
-                break;
+                    break;
                 case 1: //wand 5
                     GameManager.Instance.dmg = 5;
-                break;
+                    break;
                 case 2: //gun 3
                     GameManager.Instance.dmg = 3;
-                break;
+                    break;
             }
         }
 
-        public void LevelSet(){
-            for(int i = 0;i < GameManager.Instance.weaponLevel - 1;i++){
+        public void LevelSet()
+        {
+            for (int i = 0; i < GameManager.Instance.weaponLevel - 1; i++)
+            {
                 lockImg[i].SetActive(false);
             }
-        }       
-        private void OnMouseExit() {
-                print("exit");
         }
-        void CursorLimit(){
-            
+
+        private void OnMouseExit()
+        {
+            print("exit");
         }
     }
-
 }

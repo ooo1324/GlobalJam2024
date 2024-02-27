@@ -7,11 +7,8 @@ namespace LJH{
     {
         float xPos, yPos;
         [SerializeField] float speed = 30.0f;
-        // Start is called before the first frame update
-        void Start()
-        {
-            
-        }
+        [SerializeField]
+        Camera fullCam;
 
         // Update is called once per frame
         void Update()
@@ -19,7 +16,17 @@ namespace LJH{
             xPos = Input.GetAxisRaw("Horizontal");
             yPos = Input.GetAxisRaw("Vertical");
 
-            this.transform.position += new Vector3(xPos,yPos,0) * Time.deltaTime * speed;
+            if (fullCam != null)
+            {
+                Vector3 pos = fullCam.WorldToViewportPoint(this.transform.position + new Vector3(xPos, yPos, 0) * Time.deltaTime * speed);
+
+                if (pos.x < 0f) pos.x = 0f; 
+                if (pos.x > 1f) pos.x = 1f;
+                if (pos.y < 0f) pos.y = 0f; 
+                if (pos.y > 1f) pos.y = 1f;
+             
+                transform.position = fullCam.ViewportToWorldPoint(pos);
+            }
         }
     }
 }
