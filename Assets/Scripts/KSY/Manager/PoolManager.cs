@@ -36,7 +36,7 @@ namespace KSY
             {
                 if (poolable == null)
                     return;
-                poolable.transform.parent = Root;
+                poolable.transform.SetParent(Root);
                 poolable.gameObject.SetActive(false);
                 poolable.IsUsing = false;
 
@@ -54,11 +54,11 @@ namespace KSY
 
                 poolable.gameObject.SetActive(true);
 
-                //// DontDestroyOnLoad ÇØÁ¦ ¿ëµµ
+                //// DontDestroyOnLoad ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµ
                 //if (parent == null)
                 //    poolable.transform.parent = Managers.Scene.CurrentScene.transform;
 
-                poolable.transform.parent = parent;
+                poolable.transform.SetParent(parent);
                 poolable.IsUsing = true;
 
                 return poolable;
